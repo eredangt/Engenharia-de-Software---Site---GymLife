@@ -177,8 +177,12 @@
                                     <td>Acima do Peso</td>
                                 </tr>
                                 <tr>
-                                    <td class="point">30.0 - e acima</td>
+                                    <td class="point">30.0 - 39.9</td>
                                     <td>Obeso</td>
+                                </tr>
+                                <tr>
+                                    <td class="point">40.0 e acima</td>
+                                    <td>Obesidade Grave</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -191,23 +195,48 @@
                     </div>
                     <div class="chart-calculate-form">
                         <p>Digite sua altura e seu peso e depois clique no botão "Calcular" logo abaixo.
-                        Será dado o valor correspondente ao seu Índice de Massa Corporal e sua situação de acordo com a tabela do IMC.</p>
-                        <form action="#">
+                        Será dado o valor correspondente ao seu Índice de Massa Corporal, após isso verifique sua situação de acordo com a tabela de IMC ao lado.</p>
+                        <form action="">
+                            <script language='JavaScript'>
+                                function SomenteNumero(e){
+                                    var tecla = (window.event)?event.keyCode:e.which;   
+                                    if(tecla > 47 && tecla < 58) return true;
+                                    else{
+    	                                if (tecla == 8 || tecla == 0) return true;
+	                                    else return false;
+                                    }
+                                }
+                            </script>
+
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="text" placeholder="Altura / cm">
+                                    <small id="calculadoraIMC">Digite sua altura sem vírgula. <br> (Ex.: 1,80 seria 180)</small>
+                                    <input type="text" id="altura" placeholder="Altura / cm" maxlength="3" onkeypress='return SomenteNumero(event)'>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" placeholder="Peso / kg">
+                                    <small id="calculadoraIMC">Digite seu peso como um valor inteiro. <br> (Ex.: 65,3 seria 65)</small>
+                                    <input type="text" id="peso" placeholder="Peso / kg" maxlength="3" onkeypress='return SomenteNumero(event)'>
                                 </div>
-                                <!--<div class="col-sm-6">
-                                    <input type="text" placeholder="Idade">
+                                <script>
+                                    function calcula_IMC(a, b){
+                                        Peso_Calc =  parseFloat(document.getElementById(a).value);
+                                        Altura_Calc = parseFloat(document.getElementById(b).value);
+
+                                        Altura_Calc = Altura_Calc/100;
+
+                                        IMC = (Peso_Calc/(Altura_Calc * Altura_Calc));
+
+                                        mostra = document.getElementById("Resultado").value = parseFloat(IMC).toFixed(2);
+                                        mostra.innerHTML = IMC;
+
+                                        return IMC;
+                                    }
+                                </script>
+                                <div class="col-lg-6">
+                                    <button type="button" onclick="calcula_IMC('peso', 'altura')">Calcular</button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" placeholder="Sexo">
-                                </div>-->
-                                <div class="col-lg-12">
-                                    <button type="submit">Calcular</button>
+                                    <input readonly="1" type="text" id="Resultado" placeholder="Resultado" maxlength="3">
                                 </div>
                             </div>
                         </form>
