@@ -227,7 +227,7 @@
                                         IMC = (Peso_Calc/(Altura_Calc * Altura_Calc));
 
                                         /* Verifica se o valor do IMC é válido, ou seja, se é um número e se é finito*/
-                                        /* Isso está sendo feito para previnir resultados de divisão por zero ou utilização de strings */
+                                        /* Isso está sendo feito para prevenir resultados de divisão por zero ou utilização de strings */
                                         if (typeof IMC === "number" && isFinite(IMC)){
                                             mostra = document.getElementById("Resultado").value = parseFloat(IMC).toFixed(2);
                                             mostra.innerHTML = IMC;
