@@ -226,17 +226,27 @@
 
                                         IMC = (Peso_Calc/(Altura_Calc * Altura_Calc));
 
-                                        mostra = document.getElementById("Resultado").value = parseFloat(IMC).toFixed(2);
-                                        mostra.innerHTML = IMC;
+                                        /* Verifica se o valor do IMC é válido, ou seja, se é um número e se é finito*/
+                                        /* Isso está sendo feito para previnir resultados de divisão por zero ou utilização de strings */
+                                        if (typeof IMC === "number" && isFinite(IMC)){
+                                            mostra = document.getElementById("Resultado").value = parseFloat(IMC).toFixed(2);
+                                            mostra.innerHTML = IMC;
 
-                                        return IMC;
+                                            return IMC;
+                                        }
+                                        else{
+                                            mostra = document.getElementById("Resultado").value = "Por favor, utilize valores válidos.";
+                                            mostra.innerHTML = "Por favor, utilize valores válidos.";
+
+                                            return "Por favor, utilize valores válidos.";
+                                        }
                                     }
                                 </script>
                                 <div class="col-lg-6">
                                     <button type="button" onclick="calcula_IMC('peso', 'altura')">Calcular</button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input readonly="1" type="text" id="Resultado" placeholder="Resultado" maxlength="3">
+                                    <input readonly="1" type="text" id="Resultado" placeholder="Resultado">
                                 </div>
                             </div>
                         </form>
