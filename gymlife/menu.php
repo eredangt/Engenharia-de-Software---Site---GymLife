@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html lang="zxx">
-
 <head>
+	<?php
+		session_start();
+		if(!isset($_SESSION['login']))
+		{
+			echo '<SCRIPT type="text/javascript"> //not showing me this
+                            alert("Logue para acessar esta página!");
+                            window.location.replace("contact.html");
+                 </SCRIPT>';
+		}
+		$nomePessoa = 'Samuel';
+	?>
     <meta charset="UTF-8">
     <meta name="description" content="Gym Template">
     <meta name="keywords" content="Gym, unica, creative, html">
@@ -60,14 +70,14 @@
                 </li>-->
                 <li><a href="./menu.php">Menu</a></li>
                 <?php
-					if($perfil == 'instrutor'){
+					if($_SESSION['cargo'] == 'instrutor'){
 							echo '<li><a href="#">Cadastrar</a>
 								<ul class="dropdown">
 									<li><a href="#">Cliente</a></li>
 									<li><a href="#">Instrutor</a></li>
 									<li><a href="#">Treino</a></li>
 									<li><a href="#">Equipamento</a></li>
-									<li><a href="#">Plano</a></li>
+									<li><a href="cadastrarplano.php">Plano</a></li>
 								</ul>
 							</li>
 							<li><a href="#">Listar</a>
@@ -76,7 +86,7 @@
 									<li><a href="#">Instrutor</a></li>
 									<li><a href="#">Treino</a></li>
 									<li><a href="#">Equipamento</a></li>
-									<li><a href="#">Plano</a></li>
+									<li><a href="listarplanos.php">Plano</a></li>
 								</ul>
 							</li>';
 					}
@@ -86,7 +96,7 @@
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="canvas-social">
-			<a href="#"><i>Log Out</i></a>
+			<a href="logout.php"><i>Log Out</i></a>
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
             <a href="#"><i class="fa fa-youtube-play"></i></a>
@@ -128,15 +138,14 @@
                             </li>-->
                             <li class="active"><a href="./menu.php">Menu</a></li>
                             <?php
-                            $perfil = 'instrutor';
-								if($perfil == 'instrutor'){
+								if($_SESSION['cargo'] == 'instrutor'){
 										echo '<li><a href="#">Cadastrar</a>
 											<ul class="dropdown">
 												<li><a href="#">Cliente</a></li>
 												<li><a href="#">Instrutor</a></li>
 												<li><a href="#">Treino</a></li>
 												<li><a href="#">Equipamento</a></li>
-												<li><a href="#">Plano</a></li>
+												<li><a href="cadastrarplano.php">Plano</a></li>
 											</ul>
 										</li>
 										<li><a href="#">Listar</a>
@@ -145,7 +154,7 @@
 												<li><a href="#">Instrutor</a></li>
 												<li><a href="#">Treino</a></li>
 												<li><a href="#">Equipamento</a></li>
-												<li><a href="#">Plano</a></li>
+												<li><a href="listarplanos.php">Plano</a></li>
 											</ul>
 										</li>';
 								}
@@ -159,7 +168,7 @@
                             <i class="fa fa-search"></i>
                         </div>-->
                         <div class="to-social">
-							<a href="#"><i>Log Out</i></a>
+							<a href="logout.php"><i>Log Out</i></a>
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="#"><i class="fa fa-youtube-play"></i></a>
@@ -199,10 +208,8 @@
         <div class="container">
             <div class="row">
                     <?php
-						$nomePessoa = 'Samuel';
-						$perfil = 'instrutor'; // aluno ou instrutor
 						$mensagem = '';
-						if($perfil == 'aluno'){
+						if($_SESSION['cargo'] == 'aluno'){
 							$mensagem = '
 									<div class="col-lg-12">
 										<div class="section-title contact-title">
@@ -383,7 +390,7 @@
 														<p>Cadastrar Equipamento</p></a>
 													</div>
 													<div class="cw-text">
-														<a href="#"><i class="fa fa-tag"></i></i>
+														<a href="cadastrarplano.php"><i class="fa fa-tag"></i></i>
 														<p>Cadastrar Plano</p></a>
 													</div>
 												</div>
@@ -409,7 +416,7 @@
 														<p>Listar Equipamentos</p></a>
 													</div>
 													<div class="cw-text">
-														<a href="#"><i class="fa fa-tag"></i></i>
+														<a href="listarplanos.php"><i class="fa fa-tag"></i></i>
 														<p>Listar Planos</p></a>
 													</div>
 												</div>
