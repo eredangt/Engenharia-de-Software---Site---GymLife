@@ -7,7 +7,7 @@
     <meta name="keywords" content="Gym, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gym | Template</title>
+    <title>Gym | Login</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -175,9 +175,9 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="#">
-                            <input type="text" placeholder="Usuário">
-                            <input type="password" placeholder="Senha">
+                        <form action="login.php" method="post" name="frmLogin">
+                            <input type="text" name="txtLogin" placeholder="Usuário">
+                            <input type="password" name="txtSenha" placeholder="Senha">
                             <!--<input type="text" placeholder="Website">-->
                             <!--<textarea placeholder="Comment"></textarea>-->
                             <button type="submit">Entrar</button>
