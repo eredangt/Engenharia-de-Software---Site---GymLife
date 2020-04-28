@@ -160,7 +160,7 @@
                     <div class="breadcrumb-text">
                         <h2>Nossa equipe</h2>
                         <div class="bt-option">
-                            <a href="./index.html">Início</a>
+                            <a href="./index.php">Início</a>
                             <span>Nossa equipe</span>
                         </div>
                     </div>
