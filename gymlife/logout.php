@@ -3,6 +3,6 @@
 	session_destroy();
 	echo '<SCRIPT type="text/javascript"> //not showing me this
                             alert("Volte sempre!");
-                            window.location.replace("index.html");
+                            window.location.replace("index.php");
               </SCRIPT>';
 ?>
