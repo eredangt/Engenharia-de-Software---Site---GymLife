@@ -7,7 +7,7 @@
 		{
 			echo '<SCRIPT type="text/javascript"> //not showing me this
                             alert("Logue para acessar esta página!");
-                            window.location.replace("contact.html");
+                            window.location.replace("entrar.php");
                  </SCRIPT>';
 		}
 		$nomePessoa = 'Samuel';
@@ -51,12 +51,12 @@
         </div>-->
         <nav class="canvas-menu mobile-menu">
             <ul>
-                <li><a href="./index.html">Início</a></li>
-                <li><a href="./about-us.html">Sobre nós</a></li>
-                <li><a href="./class-details.html">Aulas</a></li>
-                <li><a href="./services.html">Modalidades</a></li>
-                <li><a href="./team.html">Nossa equipe</a></li>
-                <li><a href="./bmi-calculator.html">IMC</a></li>
+                <li><a href="./index.php">Início</a></li>
+                <li><a href="./about-us.php">Sobre nós</a></li>
+                <li><a href="./aulas.php">Aulas</a></li>
+                <li><a href="./modalidades.php">Modalidades</a></li>
+                <li><a href="./team.php">Nossa equipe</a></li>
+                <li><a href="./imc.php">IMC</a></li>
                 <!--<li><a href="#">Pages</a>
                     <ul class="dropdown">
                         <li><a href="./about-us.html">About us</a></li>
@@ -96,7 +96,7 @@
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="canvas-social">
-			<a href="logout.php"><i>Log Out</i></a>
+			<a href="logout.php">Log Out</a>
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
             <a href="#"><i class="fa fa-youtube-play"></i></a>
@@ -119,12 +119,12 @@
                 <div class="col-lg-6">
                     <nav class="nav-menu">
                         <ul>
-                            <li><a href="./index.html">Início</a></li>
-                            <li><a href="./about-us.html">Sobre nós</a></li>
-                            <li><a href="./class-details.html">Aulas</a></li>
-                            <li><a href="./services.html">Modalidades</a></li>
-                            <li><a href="./team.html">Nossa equipe</a></li>
-                            <li><a href="./bmi-calculator.html">IMC</a></li>
+                            <li><a href="./index.php">Início</a></li>
+                            <li><a href="./about-us.php">Sobre nós</a></li>
+                            <li><a href="./aulas.php">Aulas</a></li>
+                            <li><a href="./modalidades.php">Modalidades</a></li>
+                            <li><a href="./team.php">Nossa equipe</a></li>
+                            <li><a href="./imc.php">IMC</a></li>
                             <!--<li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="./about-us.html">About us</a></li>
@@ -192,7 +192,7 @@
                     <div class="breadcrumb-text">
                         <h2>MENU</h2>
                         <div class="bt-option">
-                            <a href="./index.html">Início</a>
+                            <a href="./index.php">Início</a>
                             <!--<a href="#">Pages</a>-->
                             <span>Menu</span>
                         </div>
@@ -495,10 +495,18 @@
                     <div class="fs-widget">
                         <h4>Links úteis</h4>
                         <ul>
-                            <li><a href="./about-us.html">Sobre nós</a></li>
-                            <li><a href="./class-details.html">Aulas</a></li>
-                            <li><a href="./services.html">Modalidades</a></li>
-                            <li><a href="./contact.html">Login</a></li>
+                            <li><a href="./about-us.php">Sobre nós</a></li>
+                            <li><a href="./aulas.php">Aulas</a></li>
+                            <li><a href="./modalidades.php">Modalidades</a></li>
+                            <?php
+                                if(isset($_SESSION['login']))
+                                {
+                                    echo '<li><a href="./menu.php">Menu</a></li>';
+                                }
+                                else{
+                                    echo '<li><a href="./entrar.php">Login</a></li>';
+                                }
+                            ?>
                         </ul>
                     </div>
                 </div>
