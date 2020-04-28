@@ -95,7 +95,7 @@
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="canvas-social">
-			<a href="logout.php"><i>Log Out</i></a>
+			<a href="logout.php">Log Out</a>
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
             <a href="#"><i class="fa fa-youtube-play"></i></a>
@@ -167,7 +167,7 @@
                             <i class="fa fa-search"></i>
                         </div>-->
                         <div class="to-social">
-							<a href="logout.php"><i>Log Out</i></a>
+							<a href="logout.php">Log Out</a>
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="#"><i class="fa fa-youtube-play"></i></a>
