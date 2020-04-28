@@ -162,7 +162,7 @@
                             <div class="hi-text">
                                 <span>Molde seu corpo</span>
                                 <h1>Seja <strong>forte</strong> treinando muito</h1>
-                                <a href="./contact.html" class="primary-btn">Login</a>
+                                <a href="./entrar.php" class="primary-btn">Login</a>
                             </div>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                             <div class="hi-text">
                                 <span>Molde seu corpo</span>
                                 <h1>Seja <strong>forte</strong> treinando muito</h1>
-                                <a href="./contact.html" class="primary-btn">Login</a>
+                                <a href="./entrar.php" class="primary-btn">Login</a>
                             </div>
                         </div>
                     </div>
