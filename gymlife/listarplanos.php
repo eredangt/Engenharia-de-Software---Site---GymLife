@@ -215,7 +215,7 @@
                     <div class="breadcrumb-text">
                         <h2>LISTAR PLANOS</h2>
                         <div class="bt-option">
-                            <a href="./index.html">Início</a>
+                            <a href="./index.php">Início</a>
                             <!--<a href="#">Pages</a>-->
                             <span>Listar Planos</span>
                         </div>
