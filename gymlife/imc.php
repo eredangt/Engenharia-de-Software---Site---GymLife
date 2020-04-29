@@ -63,7 +63,34 @@
                         <li><a href="./404.html">404</a></li>
                     </ul>
                 </li>-->
-                <li><a href="./entrar.php">Login</a></li>
+				 <?php
+					if(isset($_SESSION['login']))
+					{
+						echo '<li><a href="./menu.php">Menu</a></li>';
+						if($_SESSION['cargo'] == 'instrutor'){
+							echo '<li><a href="cadastrar.php">Cadastrar</a>
+										<ul class="dropdown">
+											<li><a href="cadastrarpessoa.php">Pessoa</a></li>
+											<li><a href="cadastrartreino.php">Treino</a></li>
+											<li><a href="cadastrarequipamento.php">Equipamento</a></li>
+											<li><a href="cadastrarplano.php">Plano</a></li>
+										</ul>
+									</li>
+									<li><a href="listar.php">Listar</a>
+										<ul class="dropdown">
+											<li><a href="listarpessoas.php">Pessoas</a></li>
+											<li><a href="listartreinos.php">Treinos</a></li>
+											<li><a href="listarequipamentos.php">Equipamentos</a></li>
+											<li><a href="listarplanos.php">Planos</a></li>
+										</ul>
+									</li>';
+						}
+					}
+					else{
+						echo '<li><a href="./entrar.php">Login</a></li>';
+					}
+					
+				?>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -113,15 +140,34 @@
                                     <li><a href="./404.html">404</a></li>
                                 </ul>
                             </li>-->
-                            <?php
+							<?php
                                 if(isset($_SESSION['login']))
                                 {
                                     echo '<li><a href="./menu.php">Menu</a></li>';
-                                }
+                            
+									if($_SESSION['cargo'] == 'instrutor'){
+											echo '<li><a href="cadastrar.php">Cadastrar</a>
+												<ul class="dropdown">
+													<li><a href="cadastrarpessoa.php">Pessoa</a></li>
+													<li><a href="cadastrartreino.php">Treino</a></li>
+													<li><a href="cadastrarequipamento.php">Equipamento</a></li>
+													<li><a href="cadastrarplano.php">Plano</a></li>
+												</ul>
+											</li>
+											<li><a href="listar.php">Listar</a>
+												<ul class="dropdown">
+													<li><a href="listarpessoas.php">Pessoas</a></li>
+													<li><a href="listartreinos.php">Treinos</a></li>
+													<li><a href="listarequipamentos.php">Equipamentos</a></li>
+													<li><a href="listarplanos.php">Planos</a></li>
+												</ul>
+											</li>';
+									}
+								}
                                 else{
                                     echo '<li><a href="./entrar.php">Login</a></li>';
                                 }
-                            ?>
+							?>
                         </ul>
                     </nav>
                 </div>
