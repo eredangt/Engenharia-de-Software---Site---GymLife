@@ -71,7 +71,7 @@
                 <li><a href="./menu.php">Menu</a></li>
                 <?php
 					if($_SESSION['cargo'] == 'instrutor'){
-							echo '<li><a href="#">Cadastrar</a>
+							echo '<li><a href="cadastrar.php">Cadastrar</a>
 								<ul class="dropdown">
 									<li><a href="#">Cliente</a></li>
 									<li><a href="#">Instrutor</a></li>
@@ -80,7 +80,7 @@
 									<li><a href="cadastrarplano.php">Plano</a></li>
 								</ul>
 							</li>
-							<li><a href="#">Listar</a>
+							<li><a href="listar.php">Listar</a>
 								<ul class="dropdown">
 									<li><a href="#">Cliente</a></li>
 									<li><a href="#">Instrutor</a></li>
@@ -139,21 +139,19 @@
                             <li class="active"><a href="./menu.php">Menu</a></li>
                             <?php
 								if($_SESSION['cargo'] == 'instrutor'){
-										echo '<li><a href="#">Cadastrar</a>
+										echo '<li><a href="cadastrar.php">Cadastrar</a>
 											<ul class="dropdown">
-												<li><a href="#">Cliente</a></li>
-												<li><a href="#">Instrutor</a></li>
-												<li><a href="#">Treino</a></li>
-												<li><a href="#">Equipamento</a></li>
+												<li><a href="cadastrarpessoa.php">Pessoa</a></li>
+												<li><a href="cadastrartreino.php">Treino</a></li>
+												<li><a href="cadastrarequipamento.php">Equipamento</a></li>
 												<li><a href="cadastrarplano.php">Plano</a></li>
 											</ul>
 										</li>
-										<li><a href="#">Listar</a>
+										<li><a href="listar.php">Listar</a>
 											<ul class="dropdown">
-												<li><a href="#">Cliente</a></li>
-												<li><a href="#">Instrutor</a></li>
-												<li><a href="#">Treino</a></li>
-												<li><a href="#">Equipamento</a></li>
+												<li><a href="listarpessoas.php">Pessoa</a></li>
+												<li><a href="listartreinos.php">Treino</a></li>
+												<li><a href="listarequipamentos.php">Equipamento</a></li>
 												<li><a href="listarplanos.php">Plano</a></li>
 											</ul>
 										</li>';
@@ -374,19 +372,15 @@
 											</div>
 											<div class="contact-widget">
 													<div class="cw-text">
-														<a href="#"><i class="fa fa-address-card"></i>
-														<p>Cadastrar Cliente</p></a>
-													</div>
-													<div class="cw-text">
-														<a href="#"><i class="fa fa-calendar"></i>
+														<a href="cadastrartreino.php"><i class="fa fa-calendar"></i>
 														<p>Cadastrar Treino</p></a>
 													</div>
 													<div class="cw-text">
-														<a href="#"><i class="fa fa-user-plus"></i>
-														<p>Cadastrar Instrutor</p></a>
+														<a href="cadastrarpessoa.php"><i class="fa fa-user-plus"></i>
+														<p>Cadastrar Pessoa</p></a>
 													</div>
 													<div class="cw-text">
-														<a href="#"><i class="fa fa-cogs"></i>
+														<a href="cadastrarequipamento.php"><i class="fa fa-cogs"></i>
 														<p>Cadastrar Equipamento</p></a>
 													</div>
 													<div class="cw-text">
@@ -400,19 +394,15 @@
 												<div class="contact-widget">
 													<br><br><br><br>
 													<div class="cw-text">
-														<a href="#"><i class="fa fa-address-card"></i>
-														<p>Listar Clientes</p></a>
-													</div>
-													<div class="cw-text">
-														<a href="#"><i class="fa fa-calendar"></i>
+														<a href="listartreinos.php"><i class="fa fa-calendar"></i>
 														<p>Listar Treinos</p></a>
 													</div>
 													<div class="cw-text">
-														<a href="#"><i class="fa fa-user-plus"></i>
-														<p>Listar Instrutores</p></a>
+														<a href="listarpessoas.php"><i class="fa fa-user-plus"></i>
+														<p>Listar Pessoas</p></a>
 													</div>
 													<div class="cw-text">
-														<a href="#"><i class="fa fa-cogs"></i>
+														<a href="listarequipamentos.php"><i class="fa fa-cogs"></i>
 														<p>Listar Equipamentos</p></a>
 													</div>
 													<div class="cw-text">

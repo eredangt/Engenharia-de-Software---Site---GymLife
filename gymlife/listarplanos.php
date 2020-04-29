@@ -92,28 +92,26 @@
                     </ul>
                 </li>-->
                 <li><a href="./menu.php">Menu</a></li>
-                <?php
+				<?php
 					if($_SESSION['cargo'] == 'instrutor'){
-							echo '<li><a href="#">Cadastrar</a>
-								<ul class="dropdown">
-									<li><a href="#">Cliente</a></li>
-									<li><a href="#">Instrutor</a></li>
-									<li><a href="#">Treino</a></li>
-									<li><a href="#">Equipamento</a></li>
-									<li><a href="cadastrarplano.php">Plano</a></li>
-								</ul>
-							</li>
-							<li><a href="#">Listar</a>
-								<ul class="dropdown">
-									<li><a href="#">Cliente</a></li>
-									<li><a href="#">Instrutor</a></li>
-									<li><a href="#">Treino</a></li>
-									<li><a href="#">Equipamento</a></li>
-									<li><a href="listarplanos.php">Plano</a></li>
-								</ul>
-							</li>';
-					}
-                ?>
+										echo '<li><a href="cadastrar.php">Cadastrar</a>
+											<ul class="dropdown">
+												<li><a href="cadastrarpessoa.php">Pessoa</a></li>
+												<li><a href="cadastrartreino.php">Treino</a></li>
+												<li><a href="cadastrarequipamento.php">Equipamento</a></li>
+												<li><a href="cadastrarplano.php">Plano</a></li>
+											</ul>
+										</li>
+										<li><a href="listar.php">Listar</a>
+											<ul class="dropdown">
+												<li><a href="listarpessoas.php">Pessoa</a></li>
+												<li><a href="listartreinos.php">Treino</a></li>
+												<li><a href="listarequipamentos.php">Equipamento</a></li>
+												<li><a href="listarplanos.php">Plano</a></li>
+											</ul>
+										</li>';
+								}
+				?>
                 
             </ul>
         </nav>
@@ -162,21 +160,19 @@
                             <li><a href="./menu.php">Menu</a></li>
                             <?php
 								if($_SESSION['cargo'] == 'instrutor'){
-										echo '<li><a href="#">Cadastrar</a>
+										echo '<li><a href="cadastrar.php">Cadastrar</a>
 											<ul class="dropdown">
-												<li><a href="#">Cliente</a></li>
-												<li><a href="#">Instrutor</a></li>
-												<li><a href="#">Treino</a></li>
-												<li><a href="#">Equipamento</a></li>
+												<li><a href="cadastrarpessoa.php">Pessoa</a></li>
+												<li><a href="cadastrartreino.php">Treino</a></li>
+												<li><a href="cadastrarequipamento.php">Equipamento</a></li>
 												<li><a href="cadastrarplano.php">Plano</a></li>
 											</ul>
 										</li>
-										<li class="active"><a href="#">Listar</a>
+										<li><a href="listar.php">Listar</a>
 											<ul class="dropdown">
-												<li><a href="#">Cliente</a></li>
-												<li><a href="#">Instrutor</a></li>
-												<li><a href="#">Treino</a></li>
-												<li><a href="#">Equipamento</a></li>
+												<li><a href="listarpessoas.php">Pessoa</a></li>
+												<li><a href="listartreinos.php">Treino</a></li>
+												<li><a href="listarequipamentos.php">Equipamento</a></li>
 												<li><a href="listarplanos.php">Plano</a></li>
 											</ul>
 										</li>';
@@ -256,10 +252,12 @@
 											<th>Nome</th>
 											<th>Meses</th>
 											<th>Valor</th>
+											<th>Alterar</th>
+											<th>Excluir</th>
 										</tr>
 										</thead>
 										<tbody>
-											<tr>
+											<tr>	
 												<!--<td class="class-time">Coluna diferente</td>-->
 												<td class="dark-bg hover-dp ts-meta">
 													<h5>Mensal Manual</h5>
@@ -269,6 +267,12 @@
 												</td>
 												<td class="dark-bg hover-dp ts-meta">
 													<h5>R$100.00</h5>
+												</td>
+												<td class="hover-dp ts-meta">
+													<h5><a href="#">&#9997;</a></h5>
+												</td>
+												<td class="dark-bg hover-dp ts-meta">
+													<h5><a href="#">&#10006;</a></h5>
 												</td>
 											</tr>
 											<tr>
@@ -282,6 +286,12 @@
 												<td class="dark-bg hover-dp ts-meta">
 													<h5>R$90.00</h5>
 												</td>
+												<td class="hover-dp ts-meta">
+													<h5><a href="#">&#9997;</a></h5>
+												</td>
+												<td class="dark-bg hover-dp ts-meta">
+													<h5><a href="#">&#10006;</a></h5>
+												</td>
 											</tr>
 
 											<!--<tr> PARTE DE QUANDO FOR A BUSCA NO BANCO DE DADOS. EXEMPLO
@@ -294,9 +304,11 @@
 																
 												#	while($linha=mysqli_fetch_row($tabela)){
 												#		echo '<tr>
-												#				<td>'.htmlentities($linha[1]).'</td>
-												#				<td>'.htmlentities($linha[0]).'</td>
-												#				<td><center><a href="add_tamanho.php?codigo='.$linha[0].'"><b> + </b></a></td>
+												#				<td class="hover-dp ts-meta">'.htmlentities($linha[1]).'</td>
+												#				<td class="dark-bg hover-dp ts-meta">'.htmlentities($linha[0]).'</td>
+												#				<td class="hover-dp ts-meta">'.htmlentities($linha[2]).'</td>
+												#				<td class="hover-dp ts-meta"><center><a href="altera.php?codigo='.$linha[0].'"><b>&#9997;</b></a></td>
+												#				<td class="hover-dp ts-meta"><center><a href="exclui.php?codigo='.$linha[0].'"><b>&#10006;</b></a></td>
 												#			</tr>';
 												#	}
 												?>	
