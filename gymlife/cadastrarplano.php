@@ -138,13 +138,13 @@
                             <li><a href="./menu.php">Menu</a></li>
                             <?php
 								if($_SESSION['cargo'] == 'instrutor'){
-										echo '<li><a href="#">Cadastrar</a>
+										echo '<li class="active"><a href="#">Cadastrar</a>
 											<ul class="dropdown">
 												<li><a href="#">Cliente</a></li>
 												<li><a href="#">Instrutor</a></li>
 												<li><a href="#">Treino</a></li>
 												<li><a href="#">Equipamento</a></li>
-												<li class="active"><a href="cadastrarplano.php">Plano</a></li>
+												<li><a href="cadastrarplano.php">Plano</a></li>
 											</ul>
 										</li>
 										<li><a href="#">Listar</a>

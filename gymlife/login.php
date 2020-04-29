@@ -32,7 +32,7 @@
 	
 	if ($login == 'm' && $senha == 'm'){
 		$_SESSION['login'] = 'Voc&ecirc; est&aacute logado no sistema!';
-		$_SESSION['cargo'] = 'aluno'; // TESTES (instrutor e aluno) Essa variavel é responsável por determinar a ocupação da pessoa na academia
+		$_SESSION['cargo'] = 'instrutor'; // TESTES (instrutor e aluno) Essa variavel é responsável por determinar a ocupação da pessoa na academia
 		echo '<SCRIPT type="text/javascript"> //not showing me this
                             alert("Você está logado!!");
                             window.location.replace("menu.php");
