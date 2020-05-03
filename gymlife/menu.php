@@ -74,7 +74,6 @@
 							echo '<li><a href="cadastrar.php">Cadastrar</a>
 								<ul class="dropdown">
 									<li><a href="#">Cliente</a></li>
-									<li><a href="#">Instrutor</a></li>
 									<li><a href="#">Treino</a></li>
 									<li><a href="#">Equipamento</a></li>
 									<li><a href="cadastrarplano.php">Plano</a></li>
@@ -82,11 +81,10 @@
 							</li>
 							<li><a href="listar.php">Listar</a>
 								<ul class="dropdown">
-									<li><a href="#">Cliente</a></li>
-									<li><a href="#">Instrutor</a></li>
-									<li><a href="#">Treino</a></li>
-									<li><a href="#">Equipamento</a></li>
-									<li><a href="listarplanos.php">Plano</a></li>
+									<li><a href="#">Clientes</a></li>
+									<li><a href="#">Treinos</a></li>
+									<li><a href="#">Equipamentos</a></li>
+									<li><a href="listarplanos.php">Planos</a></li>
 								</ul>
 							</li>';
 					}
@@ -149,10 +147,10 @@
 										</li>
 										<li><a href="listar.php">Listar</a>
 											<ul class="dropdown">
-												<li><a href="listarpessoas.php">Pessoa</a></li>
-												<li><a href="listartreinos.php">Treino</a></li>
-												<li><a href="listarequipamentos.php">Equipamento</a></li>
-												<li><a href="listarplanos.php">Plano</a></li>
+												<li><a href="listarpessoas.php">Pessoas</a></li>
+												<li><a href="listartreinos.php">Treinos</a></li>
+												<li><a href="listarequipamentos.php">Equipamentos</a></li>
+												<li><a href="listarplanos.php">Planos</a></li>
 											</ul>
 										</li>';
 								}

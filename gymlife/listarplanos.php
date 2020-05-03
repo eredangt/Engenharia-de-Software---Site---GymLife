@@ -104,10 +104,10 @@
 										</li>
 										<li><a href="listar.php">Listar</a>
 											<ul class="dropdown">
-												<li><a href="listarpessoas.php">Pessoa</a></li>
-												<li><a href="listartreinos.php">Treino</a></li>
-												<li><a href="listarequipamentos.php">Equipamento</a></li>
-												<li><a href="listarplanos.php">Plano</a></li>
+												<li><a href="listarpessoas.php">Pessoas</a></li>
+												<li><a href="listartreinos.php">Treinos</a></li>
+												<li><a href="listarequipamentos.php">Equipamentos</a></li>
+												<li><a href="listarplanos.php">Planos</a></li>
 											</ul>
 										</li>';
 								}
@@ -168,12 +168,12 @@
 												<li><a href="cadastrarplano.php">Plano</a></li>
 											</ul>
 										</li>
-										<li><a href="listar.php">Listar</a>
+										<li class="active"><a href="listar.php">Listar</a>
 											<ul class="dropdown">
-												<li><a href="listarpessoas.php">Pessoa</a></li>
-												<li><a href="listartreinos.php">Treino</a></li>
-												<li><a href="listarequipamentos.php">Equipamento</a></li>
-												<li><a href="listarplanos.php">Plano</a></li>
+												<li><a href="listarpessoas.php">Pessoas</a></li>
+												<li><a href="listartreinos.php">Treinos</a></li>
+												<li><a href="listarequipamentos.php">Equipamentos</a></li>
+												<li><a href="listarplanos.php">Planos</a></li>
 											</ul>
 										</li>';
 								}
@@ -212,7 +212,7 @@
                         <h2>LISTAR PLANOS</h2>
                         <div class="bt-option">
                             <a href="./index.php">Início</a>
-                            <!--<a href="#">Pages</a>-->
+                            <a href="./menu.php">Menu</a>
                             <span>Listar Planos</span>
                         </div>
                     </div>
@@ -232,7 +232,7 @@
 				<div class="col-lg-6 col-md-6">
                     <div class="class-item">
                         <div class="ci-pic">
-                            <img src="img/clients.jpg" alt="">
+                            <img src="img/clients-2.jpg" alt="">
                         </div>
                     </div>
                 </div>

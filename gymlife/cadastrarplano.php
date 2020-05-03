@@ -136,7 +136,7 @@
                             <li><a href="./menu.php">Menu</a></li>
                             <?php
 								if($_SESSION['cargo'] == 'instrutor'){
-										echo '<li><a href="cadastrar.php">Cadastrar</a>
+										echo '<li class="active"><a href="cadastrar.php">Cadastrar</a>
 											<ul class="dropdown">
 												<li><a href="cadastrarpessoa.php">Pessoa</a></li>
 												<li><a href="cadastrartreino.php">Treino</a></li>
@@ -209,7 +209,7 @@
 				<div class="col-lg-6 col-md-6">
                     <div class="class-item">
                         <div class="ci-pic">
-                            <img src="img/clients.jpg" alt="">
+                            <img src="img/clients-2.jpg" alt="">
                         </div>
                     </div>
                 </div>
