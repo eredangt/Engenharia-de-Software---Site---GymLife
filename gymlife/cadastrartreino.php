@@ -7,7 +7,7 @@
 		{
 			echo '<SCRIPT type="text/javascript"> //not showing me this
                             alert("Logue para acessar esta página!");
-                            window.location.replace("contact.html");
+                            window.location.replace("entrar.php");
                  </SCRIPT>';
 		}
 	?>

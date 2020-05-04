@@ -38,8 +38,14 @@
                             window.location.replace("menu.php");
               </SCRIPT>';
 	}else{
+		echo '<SCRIPT type="text/javascript"> //not showing me this
+                            alert("Login ou senha incorretos. Tente novamente.");
+                            window.location.replace("entrar.php");
+			  </SCRIPT>';
+		/*
 		$_SESSION['erro'] = 'Usu&aacute;rio ou senha incorreto!';
-		header('location: contact.html');
+		header('location: entrar.php');
+		*/
 	}
 	/*
 	 *  echo '<SCRIPT type="text/javascript"> //not showing me this
