@@ -212,7 +212,7 @@
                         <h2>LISTAR PLANOS</h2>
                         <div class="bt-option">
                             <a href="./index.php">Início</a>
-                            <a href="./menu.php">Menu</a>
+                            <a href="./listar.php">Listar</a>
                             <span>Listar Planos</span>
                         </div>
                     </div>

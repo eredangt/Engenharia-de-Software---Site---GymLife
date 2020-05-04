@@ -212,7 +212,7 @@
                         <h2>LISTAR TREINOS</h2>
                         <div class="bt-option">
                             <a href="./index.php">Início</a>
-                            <a href="./menu.php">Menu</a>
+                            <a href="./listar.php">Listar</a>
                             <span>Listar Treinos</span>
                         </div>
                     </div>
@@ -229,7 +229,7 @@
 						<span>Visualize os treinos cadastrados</span>
 					</div>
             <div class="row">
-				<div class="col-lg-6 col-md-6">
+				<div class="col-lg-12 col-md-12">
                     <div class="class-item">
                         <div class="ci-pic">
                             <img src="img/clients-3.jpg" alt="">
@@ -237,7 +237,7 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="leave-comment">
                         <form action="#" method="post" name="frmLogin">
                             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Procurar Treino pelo nome do Cliente">
