@@ -10,6 +10,12 @@
                             window.location.replace("entrar.php");
                  </SCRIPT>';
 		}
+		if(($_SESSION['cargo'] == 'aluno')){
+			echo '<SCRIPT type="text/javascript"> //not showing me this
+                            alert("Você não tem permissão para entrar aqui.");
+                            window.location.replace("menu.php");
+			  </SCRIPT>';
+		}
 	?>
     <meta charset="UTF-8">
     <meta name="description" content="Gym Template">
@@ -188,7 +194,7 @@
                         <h2>CADASTRAR PESSOA</h2>
                         <div class="bt-option">
                             <a href="./index.php">Início</a>
-                            <a href="./menu.php">Menu</a>
+                            <a href="./cadastrar.php">Cadastrar</a>
                             <span>Cadastrar Pessoa</span>
                         </div>
                     </div>
