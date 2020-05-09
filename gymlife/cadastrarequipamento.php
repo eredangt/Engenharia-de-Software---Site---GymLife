@@ -223,9 +223,12 @@
                 <div class="col-lg-6">
                     <div class="leave-comment">
                         <form action="#" method="post" name="frmLogin">
-                            <input type="text" name="txtEquiq" placeholder="Nome do Equipamento">
-                            <input type="number" name="txtQuant" placeholder="Quantidade do Equipamento">
-                            <input type="text" name="txtMarca" placeholder="Marca">
+                            <span id="spanSpecial">Nome do Equipamento</span>
+                            <input type="text" name="txtEquiq" placeholder="Digite o nome do equipamento">
+                            <span id="spanSpecial">Quantidade do Equipamento</span>
+                            <input type="number" name="txtQuant" placeholder="Digite a quantidade em estoque">
+                            <span id="spanSpecial">Marca do Equipamento</span>
+                            <input type="text" name="txtMarca" placeholder="Digite o nome da marca do equipamento">
                             <span id="spanSpecial">Ano do Equipamento</span>
                             <input type="date" name="txtData">
                             <!--<input type="text" placeholder="Website">-->

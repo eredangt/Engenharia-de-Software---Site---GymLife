@@ -197,8 +197,10 @@
                 <div class="col-lg-6">
                     <div class="leave-comment">
                         <form action="login.php" method="post" name="frmLogin">
-                            <input type="text" name="txtLogin" placeholder="Usuário">
-                            <input type="password" name="txtSenha" placeholder="Senha">
+                            <span id="spanSpecial">Login</span>
+                            <input type="text" name="txtLogin" placeholder="Digite seu Login">
+                            <span id="spanSpecial">Senha</span>
+                            <input type="password" name="txtSenha" placeholder="Digite sua Senha">
                             <!--<input type="text" placeholder="Website">-->
                             <!--<textarea placeholder="Comment"></textarea>-->
                             <button type="submit">Entrar</button>

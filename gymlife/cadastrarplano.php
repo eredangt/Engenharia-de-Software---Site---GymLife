@@ -223,9 +223,12 @@
                 <div class="col-lg-6">
                     <div class="leave-comment">
                         <form action="#" method="post" name="frmLogin">
-                            <input type="text" name="txtPlano" placeholder="Nome do Plano">
-                            <input type="number" name="txtMeses" placeholder="Quantidade de Meses">
-                            <input type="text" name="txtValor" placeholder="Valor">
+                            <span id="spanSpecial">Nome do Plano</span>
+                            <input type="text" name="txtPlano" placeholder="Digite um nome para o plano">
+                            <span id="spanSpecial">Quantidade de Meses</span>
+                            <input type="number" name="txtMeses" placeholder="Digite por quantos meses o plano será válido">
+                            <span id="spanSpecial">Valor do Plano</span>
+                            <input type="text" name="txtValor" placeholder="Defina um preço para o plano a ser cadastrado">
                             <!--<input type="text" placeholder="Website">-->
                             <!--<textarea placeholder="Comment"></textarea>-->
                             <button type="submit">Cadastrar</button>

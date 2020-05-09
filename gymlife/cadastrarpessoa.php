@@ -228,10 +228,14 @@
 			                    <option value="Cliente" id="optionCadastro">Cliente</option>
 			                    <option value="Instrutor" id="optionCadastro">Instrutor</option>
 		                    </select>
-                            <input type="text" name="txtCPFPessoa" placeholder="CPF">
-                            <input type="text" name="txtNome" placeholder="Nome">
-                            <input type="text" name="txtTel" placeholder="Telefone">
-                            <input type="text" name="txtemail" placeholder="E-mail">
+                            <span id="spanSpecial">CPF</span>
+                            <input type="text" name="txtCPFPessoa" placeholder="Digite o número do CPF">
+                            <span id="spanSpecial">Nome</span>
+                            <input type="text" name="txtNome" placeholder="Digite o nome da pessoa a ser cadastrada">
+                            <span id="spanSpecial">Número de Telefone</span>
+                            <input type="text" name="txtTel" placeholder="Digite um número de telefone para contato">
+                            <span id="spanSpecial">Endereço Eletrônico</span>
+                            <input type="text" name="txtemail" placeholder="Digite um e-mail válido para contato">
                             <span id="spanSpecial">Data de Nascimento</span>
                             <input type="date" name="txtData">
                             <!--<input type="text" placeholder="Website">-->

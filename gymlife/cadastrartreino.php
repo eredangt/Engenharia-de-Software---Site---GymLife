@@ -229,12 +229,18 @@
 			                    <option value="B" id="optionCadastro">Treino B</option>
                                 <option value="C" id="optionCadastro">Treino C</option>
 		                    </select>
-                            <input type="text" name="txtCPFCliente" placeholder="CPF do Cliente">
-                            <input type="text" name="txtCPFFunc" placeholder="CPF do Funcionário">
-                            <input type="text" name="txtIdEquip" placeholder="Identificador do Equipamento">
-                            <input type="number" name="txtSerie" placeholder="Quantidade de Séries">
-                            <input type="number" name="txtRep" placeholder="Quantidade de Repetições">
-                            <input type="number" name="txtPeso" placeholder="Peso">
+                            <span id="spanSpecial">CPF do Cliente</span>
+                            <input type="text" name="txtCPFCliente" placeholder="Digite o número do CPF">
+                            <span id="spanSpecial">CPF do Funcionário</span>
+                            <input type="text" name="txtCPFFunc" placeholder="Digite o número do CPF">
+                            <span id="spanSpecial">Identificador do Equipamento</span>
+                            <input type="text" name="txtIdEquip" placeholder="Digite o ID do equipamento">
+                            <span id="spanSpecial">Quantidade de Séries</span>
+                            <input type="number" name="txtSerie" placeholder="Digite o número de séries">
+                            <span id="spanSpecial">Quantidade de Repetições</span>
+                            <input type="number" name="txtRep" placeholder="Digite o número de repetições">
+                            <span id="spanSpecial">Peso</span>
+                            <input type="number" name="txtPeso" placeholder="Digite o peso sugerido">
                             <!--<input type="text" placeholder="Website">-->
                             <!--<textarea placeholder="Comment"></textarea>-->
                             <button type="submit">Cadastrar</button>
