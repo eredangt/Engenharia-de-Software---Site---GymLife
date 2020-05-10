@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> 
 </head>
 
 <body>
@@ -223,27 +224,73 @@
                 <div class="col-lg-6">
                     <div class="leave-comment">
                         <form action="#" method="post" name="frmLogin">
-                            <span id="spanSpecial">Tipo de Cadastro</span>
+		                    <span id="spanSpecial">Tipo de Cadastro</span>
                             <select name="selecao" id="selectCadastro">
-			                    <option value="Cliente" id="optionCadastro">Cliente</option>
-			                    <option value="Instrutor" id="optionCadastro">Instrutor</option>
-		                    </select>
-                            <span id="spanSpecial">CPF</span>
-                            <input type="text" name="txtCPFPessoa" placeholder="Digite o número do CPF">
-                            <span id="spanSpecial">Nome</span>
-                            <input type="text" name="txtNome" placeholder="Digite o nome da pessoa a ser cadastrada">
-                            <span id="spanSpecial">Número de Telefone</span>
-                            <input type="text" name="txtTel" placeholder="Digite um número de telefone para contato">
-                            <span id="spanSpecial">Endereço Eletrônico</span>
-                            <input type="text" name="txtemail" placeholder="Digite um e-mail válido para contato">
-                            <span id="spanSpecial">Data de Nascimento</span>
-                            <input type="date" name="txtData">
-                            <!--<input type="text" placeholder="Website">-->
-                            <!--<textarea placeholder="Comment"></textarea>-->
-                            <button type="submit">Cadastrar</button>
+                                <option value="Nenhum" selected>Escolha o tipo de cadastro</option>
+                                <option value="Cliente">Cliente</option>
+                                <option value="Instrutor">Instrutor</option>
+                            </select>
+
+                            <div class="Cliente_Selecionado" id="ClienteSel" style="display:none"> 
+                                <span id="spanSpecial">CPF do Cliente</span>
+                                <input type="text" name="txtCPFPessoa" placeholder="Digite o número do CPF do Cliente">
+                                <span id="spanSpecial">Nome do Cliente</span>
+                                <input type="text" name="txtNome" placeholder="Digite o nome do Cliente a ser cadastrado">
+                                <span id="spanSpecial">Número de Telefone</span>
+                                <input type="text" name="txtTel" placeholder="Digite um número de telefone para contato">
+                                <span id="spanSpecial">Endereço Eletrônico</span>
+                                <input type="email" name="txtemail" placeholder="Digite um e-mail válido para contato">
+                                <span id="spanSpecial">Data de Nascimento</span>
+                                <input type="date" name="txtData">
+                                <span id="spanSpecial">Plano a ser contratado pelo Cliente</span>
+                                <select name="selecaoPlano" id="selecaoPlano">
+                                    <option value="NoPlan" selected>ESCOLHA UM PLANO</option>
+                                    <option value="Mensal">MENSAL MANUAL</option>
+                                    <option value="Trimestral">TRIMESTRAL MANUAL</option>
+                                </select>
+                                <button type="submit">Cadastrar</button>
+                            </div> 
+                            <div class="Instrutor_Selecionado" id="InstrutorSel" style="display:none"> 
+                            <span id="spanSpecial">CPF do Instrutor</span>
+                                <input type="text" name="txtCPFPessoa" placeholder="Digite o número do CPF do Instrutor">
+                                <span id="spanSpecial">Nome do Instrutor</span>
+                                <input type="text" name="txtNome" placeholder="Digite o nome do Instrutor a ser cadastrado">
+                                <span id="spanSpecial">Número de Telefone</span>
+                                <input type="text" name="txtTel" placeholder="Digite um número de telefone para contato">
+                                <span id="spanSpecial">Endereço Eletrônico</span>
+                                <input type="email" name="txtemail" placeholder="Digite um e-mail válido para contato">
+                                <span id="spanSpecial">Data de Nascimento</span>
+                                <input type="date" name="txtData">
+                                <span id="spanSpecial">Salário do Instrutor</span>
+                                <input type="number" name="txtSalario" placeholder="Digite o valor do salário do Instrutor a ser cadastrado">
+                                <span id="spanSpecial">Carga Horária do Instrutor</span>
+                                <input type="number" name="txtHoraria" placeholder="Digite a carga horária do Instrutor a ser cadastrado">
+                                <button type="submit">Cadastrar</button>
+                            </div> 
+                            <br>
+
+                            <script type="text/javascript">
+                                $(document).ready(function() { 
+                                    $('#selectCadastro').change(function() { 
+                                        if($('#selectCadastro').val() == 'Nenhum') {
+                                            $("#ClienteSel").hide("slow");
+                                            $("#InstrutorSel").hide("slow");
+                                        }
+                                        if($('#selectCadastro').val() == 'Cliente') {
+                                            $("#ClienteSel").show("slow");
+                                            $("#InstrutorSel").hide("slow"); 
+                                        }
+                                        if($('#selectCadastro').val() == 'Instrutor') {
+                                            $("#ClienteSel").hide("slow");
+                                            $("#InstrutorSel").show("slow"); 
+                                        }
+                                    }); 
+                                }); 
+                            </script>
                         </form>
                     </div>
                 </div>
+                
             </div>
             <!--<div class="map">
                 <iframe
