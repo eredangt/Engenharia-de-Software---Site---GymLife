@@ -224,7 +224,7 @@
                     <div class="leave-comment">
                         <form action="#" method="post" name="frmLogin">
                             <span id="spanSpecial">Tipo de Treino</span>
-                            <select name="selecao" id="selectCadastro">
+                            <select name="selecao" id="selectCadastroTreino" class="meuSelect">
 			                    <option value="A" id="optionCadastro">Treino A</option>
 			                    <option value="B" id="optionCadastro">Treino B</option>
                                 <option value="C" id="optionCadastro">Treino C</option>

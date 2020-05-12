@@ -225,7 +225,7 @@
                     <div class="leave-comment">
                         <form action="#" method="post" name="frmLogin">
 		                    <span id="spanSpecial">Tipo de Cadastro</span>
-                            <select name="selecao" id="selectCadastro">
+                            <select name="selecao" id="selectCadastro" class="meuSelect">
                                 <option value="Nenhum" selected>Escolha o tipo de cadastro</option>
                                 <option value="Cliente">Cliente</option>
                                 <option value="Instrutor">Instrutor</option>
@@ -238,12 +238,16 @@
                                 <input type="text" name="txtNome" placeholder="Digite o nome do Cliente a ser cadastrado">
                                 <span id="spanSpecial">Número de Telefone</span>
                                 <input type="text" name="txtTel" placeholder="Digite um número de telefone para contato">
-                                <span id="spanSpecial">Endereço Eletrônico</span>
-                                <input type="email" name="txtemail" placeholder="Digite um e-mail válido para contato">
                                 <span id="spanSpecial">Data de Nascimento</span>
                                 <input type="date" name="txtData">
+                                <span id="spanSpecial">Endereço Eletrônico</span>
+                                <br>
+                                <small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
+                                <input type="email" name="txtemail" placeholder="Digite um e-mail válido para contato">
+                                <span id="spanSpecial">Senha do Cliente</span>
+                                <input type="password" name="senhaCliente" placeholder="Digite a senha do Cliente a ser cadastrado">
                                 <span id="spanSpecial">Plano a ser contratado pelo Cliente</span>
-                                <select name="selecaoPlano" id="selecaoPlano">
+                                <select name="selecaoPlano" id="selecaoPlano" class="meuSelect">
                                     <option value="NoPlan" selected>ESCOLHA UM PLANO</option>
                                     <option value="Mensal">MENSAL MANUAL</option>
                                     <option value="Trimestral">TRIMESTRAL MANUAL</option>
@@ -257,13 +261,19 @@
                                 <input type="text" name="txtNome" placeholder="Digite o nome do Instrutor a ser cadastrado">
                                 <span id="spanSpecial">Número de Telefone</span>
                                 <input type="text" name="txtTel" placeholder="Digite um número de telefone para contato">
-                                <span id="spanSpecial">Endereço Eletrônico</span>
-                                <input type="email" name="txtemail" placeholder="Digite um e-mail válido para contato">
                                 <span id="spanSpecial">Data de Nascimento</span>
                                 <input type="date" name="txtData">
+                                <span id="spanSpecial">Endereço Eletrônico</span>
+                                <br>
+                                <small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
+                                <input type="email" name="txtemail" placeholder="Digite um e-mail válido para contato">
+                                <span id="spanSpecial">Senha do Instrutor</span>
+                                <input type="password" name="senhaInstrutor" placeholder="Digite a senha do Instrutor a ser cadastrado">
                                 <span id="spanSpecial">Salário do Instrutor</span>
                                 <input type="number" name="txtSalario" placeholder="Digite o valor do salário do Instrutor a ser cadastrado">
                                 <span id="spanSpecial">Carga Horária do Instrutor</span>
+                                <br>
+                                <small class="smallCadastro">A Carga Horária deverá ser um valor inteiro representando as horas.</small>
                                 <input type="number" name="txtHoraria" placeholder="Digite a carga horária do Instrutor a ser cadastrado">
                                 <button type="submit">Cadastrar</button>
                             </div> 

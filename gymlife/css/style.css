@@ -2649,20 +2649,8 @@ ol {
 	color: #FFFFFF;
 }
 
-#selectCadastro{
-	font-size: 14px;
-	color: #c4c4c4;
-	width: 100%;
-	height: 50px;
-	border: 1px solid #363636;
-	padding-left: 20px;
-	padding-right: 5px;
-	background: transparent;
-	margin-bottom: 20px;
-}
-
 #optionCadastro{
-	color: #000000;
+	color: #c4c4c4;
 }
 
 #spanSpecial{
@@ -2674,7 +2662,7 @@ ol {
     -webkit-font-smoothing: antialiased;
 }
 
-.col-lg-6 #ClienteSel select{
+.meuSelect{
 	font-size: 14px;
 	color: #c4c4c4;
 	width: 100%;
@@ -2682,8 +2670,12 @@ ol {
 	border: 1px solid #363636;
 	padding-left: 20px;
 	padding-right: 5px;
-	background: transparent;
+	background: #151515;
 	margin-bottom: 20px;
+}
+
+.smallCadastro {
+	color: #FFFFFF;
 }
 /*---------------------
   404 Section
