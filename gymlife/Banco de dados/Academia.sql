@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `Academia`.`Pessoa` (
   `CPF` CHAR(11) NOT NULL,
   `Nome` VARCHAR(45) NOT NULL,
   `Telefone` CHAR(11) NOT NULL COMMENT '(99)9 9999 9999',
-  `E-MAIL` VARCHAR(45) NOT NULL,
+  `E_MAIL` VARCHAR(45) NOT NULL,
   `Data_nascimento` DATE NOT NULL,
   `Senha` VARCHAR(45) NOT NULL,
   `Tipo_cargo` ENUM('C', 'I') NOT NULL,

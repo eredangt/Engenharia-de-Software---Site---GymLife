@@ -28,9 +28,9 @@
 	$cargaHI = $_POST['txtHorariaI']; // Carga Horaria
 	
 
-    if($cargo = 'C'){
+    if($cargo == 'C'){
 		
-		$sql = 'INSERT INTO Pessoa(CPF,Nome,Telefone,Email, Data_nascimento, Senha, Tipo_cargo)
+		$sql = 'INSERT INTO Pessoa(CPF,Nome,Telefone,E_MAIL, Data_nascimento, Senha, Tipo_cargo)
           VALUES("'.$cpfC.'","'.$nomeC.'","'.$telefoneC.'","'.$emailC.'","'.$dataNascC.'","'.$senhaC.'","'.$cargo.'")';
 		$resultadoC = mysqli_query($conexao,$sql);
 					
@@ -59,17 +59,17 @@
 		}
 		
 	}
-	if($cargo = 'I'){
+	if($cargo == 'I'){
 		
 		
 		
-		$sql = 'INSERT INTO Pessoa(CPF,Nome,Telefone,Email, Data_nascimento, Senha, Tipo_cargo)
+		$sql = 'INSERT INTO Pessoa(CPF,Nome,Telefone,E_MAIL, Data_nascimento, Senha, Tipo_cargo)
           VALUES("'.$cpfI.'","'.$nomeI.'","'.$telefoneI.'","'.$emailI.'","'.$dataNascI.'","'.$senhaI.'","'.$cargo.'")';
 		$resultadoI = mysqli_query($conexao,$sql);
-		
-		$sql='SELECT idPessoa FROM PESSOA WHERE CPF ="'.$cpfI.'";'; 
+        
+		$sql='SELECT idPessoa FROM Pessoa WHERE CPF ="'.$cpfI.'";'; 
 		$tabela=mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-												
+		
 		while($linha=mysqli_fetch_row($tabela)){
 			$COD_INSTRUTOR = $linha[0];
 		}
