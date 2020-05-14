@@ -11,17 +11,17 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema Academia
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `Academia` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `Academia` DEFAULT CHARACTER SET utf8;
 USE `Academia` ;
 
 -- -----------------------------------------------------
 -- Table `Academia`.`Plano`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Academia`.`Plano` (
-  `idPlano` INT(2) NOT NULL,
+  `idPlano` INT(2) NOT NULL AUTO_INCREMENT,
   `Nome` VARCHAR(45) NOT NULL,
   `numMeses` INT(2) NOT NULL,
-  `Valor` DECIMAL(3,2) NOT NULL,
+  `Valor` DECIMAL(5,2) NOT NULL,
   PRIMARY KEY (`idPlano`))
 ENGINE = InnoDB;
 
@@ -30,7 +30,7 @@ ENGINE = InnoDB;
 -- Table `Academia`.`Pessoa`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Academia`.`Pessoa` (
-  `idPessoa` INT(4) NOT NULL,
+  `idPessoa` INT(4) NOT NULL AUTO_INCREMENT,
   `CPF` CHAR(11) NOT NULL,
   `Nome` VARCHAR(45) NOT NULL,
   `Telefone` CHAR(11) NOT NULL COMMENT '(99)9 9999 9999',
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `Academia`.`Pessoa` (
   `Senha` VARCHAR(45) NOT NULL,
   `Tipo_cargo` ENUM('C', 'I') NOT NULL,
   PRIMARY KEY (`idPessoa`),
-  UNIQUE INDEX `CPF_UNIQUE` (`CPF` ASC) VISIBLE)
+  UNIQUE INDEX `CPF_UNIQUE` (`CPF` ASC))
 ENGINE = InnoDB;
 
 
@@ -49,9 +49,9 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `Academia`.`Cliente` (
   `Pessoa_idPessoa` INT(4) NOT NULL,
   `Plano_idPlano` INT(2) NOT NULL,
-  INDEX `fk_Cliente_Pessoa_idx` (`Pessoa_idPessoa` ASC) VISIBLE,
+  INDEX `fk_Cliente_Pessoa_idx` (`Pessoa_idPessoa` ASC),
   PRIMARY KEY (`Pessoa_idPessoa`),
-  INDEX `fk_Cliente_Plano1_idx` (`Plano_idPlano` ASC) VISIBLE,
+  INDEX `fk_Cliente_Plano1_idx` (`Plano_idPlano` ASC),
   CONSTRAINT `fk_Cliente_Pessoa`
     FOREIGN KEY (`Pessoa_idPessoa`)
     REFERENCES `Academia`.`Pessoa` (`idPessoa`)
@@ -70,9 +70,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Academia`.`Instrutor` (
   `Pessoa_idPessoa` INT(4) NOT NULL,
-  `Salario` DECIMAL(4,2) NOT NULL,
+  `Salario` DECIMAL(6,2) NOT NULL,
   `Carga_horaria` TIME NOT NULL,
-  INDEX `fk_Funcionario_Pessoa1_idx` (`Pessoa_idPessoa` ASC) VISIBLE,
+  INDEX `fk_Funcionario_Pessoa1_idx` (`Pessoa_idPessoa` ASC),
   PRIMARY KEY (`Pessoa_idPessoa`),
   CONSTRAINT `fk_Funcionario_Pessoa1`
     FOREIGN KEY (`Pessoa_idPessoa`)
@@ -86,7 +86,7 @@ ENGINE = InnoDB;
 -- Table `Academia`.`Equipamento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Academia`.`Equipamento` (
-  `idEquipamento` INT(3) NOT NULL,
+  `idEquipamento` INT(3) NOT NULL AUTO_INCREMENT,
   `Nome` VARCHAR(45) NOT NULL,
   `Quantidade` INT(2) NOT NULL,
   `Marca` VARCHAR(45) NOT NULL,
@@ -99,7 +99,7 @@ ENGINE = InnoDB;
 -- Table `Academia`.`Treino`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Academia`.`Treino` (
-  `idTreino` INT(5) NOT NULL,
+  `idTreino` INT(5) NOT NULL AUTO_INCREMENT,
   `Cliente_Pessoa_idPessoa` INT(4) NOT NULL,
   `Funcionario_Pessoa_idPessoa` INT(4) NOT NULL,
   `Equipamento_idEquipamento` INT(3) NOT NULL,
@@ -108,9 +108,9 @@ CREATE TABLE IF NOT EXISTS `Academia`.`Treino` (
   `Repeticoes` INT(2) NOT NULL,
   `Peso` DECIMAL(3,2) NOT NULL,
   PRIMARY KEY (`idTreino`),
-  INDEX `fk_Treino_Cliente1_idx` (`Cliente_Pessoa_idPessoa` ASC) VISIBLE,
-  INDEX `fk_Treino_Funcionario1_idx` (`Funcionario_Pessoa_idPessoa` ASC) VISIBLE,
-  INDEX `fk_Treino_Equipamento1_idx` (`Equipamento_idEquipamento` ASC) VISIBLE,
+  INDEX `fk_Treino_Cliente1_idx` (`Cliente_Pessoa_idPessoa` ASC),
+  INDEX `fk_Treino_Funcionario1_idx` (`Funcionario_Pessoa_idPessoa` ASC),
+  INDEX `fk_Treino_Equipamento1_idx` (`Equipamento_idEquipamento` ASC),
   CONSTRAINT `fk_Treino_Cliente1`
     FOREIGN KEY (`Cliente_Pessoa_idPessoa`)
     REFERENCES `Academia`.`Cliente` (`Pessoa_idPessoa`)
