@@ -223,58 +223,66 @@
                 
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="#" method="post" name="frmLogin">
+                        <form action="phpCadastrarPessoa.php" method="POST" name="frmLogin">
 		                    <span id="spanSpecial">Tipo de Cadastro</span>
                             <select name="selecao" id="selectCadastro" class="meuSelect">
                                 <option value="Nenhum" selected>Escolha o tipo de cadastro</option>
-                                <option value="Cliente">Cliente</option>
-                                <option value="Instrutor">Instrutor</option>
+                                <option value="C">Cliente</option>
+                                <option value="I">Instrutor</option>
                             </select>
 
                             <div class="Cliente_Selecionado" id="ClienteSel" style="display:none"> 
                                 <span id="spanSpecial">CPF do Cliente</span>
-                                <input type="text" name="txtCPFPessoa" placeholder="Digite o número do CPF do Cliente">
+                                <input type="text" name="txtCPFPessoaC" placeholder="Digite o número do CPF do Cliente">
                                 <span id="spanSpecial">Nome do Cliente</span>
-                                <input type="text" name="txtNome" placeholder="Digite o nome do Cliente a ser cadastrado">
+                                <input type="text" name="txtNomeC" placeholder="Digite o nome do Cliente a ser cadastrado">
                                 <span id="spanSpecial">Número de Telefone</span>
-                                <input type="text" name="txtTel" placeholder="Digite um número de telefone para contato">
+                                <input type="text" name="txtTelC" placeholder="Digite um número de telefone para contato">
                                 <span id="spanSpecial">Data de Nascimento</span>
-                                <input type="date" name="txtData">
+                                <input type="date" name="txtDataC">
                                 <span id="spanSpecial">Endereço Eletrônico</span>
                                 <br>
                                 <small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
-                                <input type="email" name="txtemail" placeholder="Digite um e-mail válido para contato">
+                                <input type="email" name="txtEmailC" placeholder="Digite um e-mail válido para contato">
                                 <span id="spanSpecial">Senha do Cliente</span>
-                                <input type="password" name="senhaCliente" placeholder="Digite a senha do Cliente a ser cadastrado">
+                                <input type="password" name="senhaPessoaC" placeholder="Digite a senha do Cliente a ser cadastrado">
                                 <span id="spanSpecial">Plano a ser contratado pelo Cliente</span>
-                                <select name="selecaoPlano" id="selecaoPlano" class="meuSelect">
+                                <select name="selecaoPlanoC" id="selecaoPlano" class="meuSelect">
                                     <option value="NoPlan" selected>ESCOLHA UM PLANO</option>
-                                    <option value="Mensal">MENSAL MANUAL</option>
-                                    <option value="Trimestral">TRIMESTRAL MANUAL</option>
+                                    <?php
+										require('phpConexaoBD.php');
+										
+										$sql='SELECT * FROM plano'; 
+										$tabela=mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+																
+										while($linha=mysqli_fetch_row($tabela)){
+											echo '<option value="'.htmlentities($linha[0]).'">'.htmlentities($linha[1]).'</option>';
+										}
+                                    ?>
                                 </select>
                                 <button type="submit">Cadastrar</button>
                             </div> 
                             <div class="Instrutor_Selecionado" id="InstrutorSel" style="display:none"> 
                             <span id="spanSpecial">CPF do Instrutor</span>
-                                <input type="text" name="txtCPFPessoa" placeholder="Digite o número do CPF do Instrutor">
+                                <input type="text" name="txtCPFPessoaI" placeholder="Digite o número do CPF do Instrutor">
                                 <span id="spanSpecial">Nome do Instrutor</span>
-                                <input type="text" name="txtNome" placeholder="Digite o nome do Instrutor a ser cadastrado">
+                                <input type="text" name="txtNomeI" placeholder="Digite o nome do Instrutor a ser cadastrado">
                                 <span id="spanSpecial">Número de Telefone</span>
-                                <input type="text" name="txtTel" placeholder="Digite um número de telefone para contato">
+                                <input type="text" name="txtTelI" placeholder="Digite um número de telefone para contato">
                                 <span id="spanSpecial">Data de Nascimento</span>
-                                <input type="date" name="txtData">
+                                <input type="date" name="txtDataI">
                                 <span id="spanSpecial">Endereço Eletrônico</span>
                                 <br>
                                 <small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
-                                <input type="email" name="txtemail" placeholder="Digite um e-mail válido para contato">
+                                <input type="email" name="txtEmailI" placeholder="Digite um e-mail válido para contato">
                                 <span id="spanSpecial">Senha do Instrutor</span>
-                                <input type="password" name="senhaInstrutor" placeholder="Digite a senha do Instrutor a ser cadastrado">
+                                <input type="password" name="senhaPessoaI" placeholder="Digite a senha do Instrutor a ser cadastrado">
                                 <span id="spanSpecial">Salário do Instrutor</span>
-                                <input type="number" name="txtSalario" placeholder="Digite o valor do salário do Instrutor a ser cadastrado">
+                                <input type="number" name="txtSalarioI" placeholder="Digite o valor do salário do Instrutor a ser cadastrado">
                                 <span id="spanSpecial">Carga Horária do Instrutor</span>
                                 <br>
                                 <small class="smallCadastro">A Carga Horária deverá ser um valor inteiro representando as horas.</small>
-                                <input type="number" name="txtHoraria" placeholder="Digite a carga horária do Instrutor a ser cadastrado">
+                                <input type="number" name="txtHorariaI" placeholder="Digite a carga horária do Instrutor a ser cadastrado">
                                 <button type="submit">Cadastrar</button>
                             </div> 
                             <br>
@@ -286,11 +294,11 @@
                                             $("#ClienteSel").hide("slow");
                                             $("#InstrutorSel").hide("slow");
                                         }
-                                        if($('#selectCadastro').val() == 'Cliente') {
+                                        if($('#selectCadastro').val() == 'C') {
                                             $("#ClienteSel").show("slow");
                                             $("#InstrutorSel").hide("slow"); 
                                         }
-                                        if($('#selectCadastro').val() == 'Instrutor') {
+                                        if($('#selectCadastro').val() == 'I') {
                                             $("#ClienteSel").hide("slow");
                                             $("#InstrutorSel").show("slow"); 
                                         }

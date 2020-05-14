@@ -266,8 +266,8 @@
 										</tr>
 										</thead>
 										<tbody>
-											<tr>	
-												<!--<td class="class-time">Coluna diferente</td>-->
+										<!--	<tr>	
+												<td class="class-time">Coluna diferente</td>
 												<td class="dark-bg hover-dp ts-meta">
 													<h5>Pessoa manual 1</h5>
 												</td>
@@ -292,52 +292,30 @@
 												<td class="dark-bg hover-dp ts-meta">
 													<h5><a href="#">&#10006;</a></h5>
 												</td>
-											</tr>
-											<tr>
-												<!--<td class="class-time">Coluna diferente</td>-->
-												<td class="dark-bg hover-dp ts-meta">
-													<h5>Pessoa manual 2</h5>
-												</td>
-												<td class="hover-dp ts-meta">
-													<h5>Instrutor</h5>
-												</td>
-												<td class="dark-bg hover-dp ts-meta">
-													<h5>xxx.xxx.xxx-xx</h5>
-												</td>
-                                                <td class="dark-bg hover-dp ts-meta">
-													<h5>(xx)xxxxx-xxxx</h5>
-												</td>
-                                                <td class="dark-bg hover-dp ts-meta">
-													<h5>emailmanual@xx.com</h5>
-												</td>
-                                                <td class="dark-bg hover-dp ts-meta">
-													<h5>xx/xx/xx</h5>
-												</td>
-												<td class="hover-dp ts-meta">
-													<h5><a href="#">&#9997;</a></h5>
-												</td>
-												<td class="dark-bg hover-dp ts-meta">
-													<h5><a href="#">&#10006;</a></h5>
-												</td>
-											</tr>
-
-											<!--<tr> PARTE DE QUANDO FOR A BUSCA NO BANCO DE DADOS. EXEMPLO
+											</tr>-->
 												<?php
-													#require('conexao.php');                
-													#$sql='SELECT * FROM categoria';
-													#$tabela=mysqli_query($conexao,$sql) or die(mysqli_error($conexao));			
-													#$sql='SELECT * FROM produto'; 
-													#$tabela=mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+													require('phpConexaoBD.php');                
+													$sql = 'SELECT * FROM Pessoa';
+													$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 																
-												#	while($linha=mysqli_fetch_row($tabela)){
-												#		echo '<tr>
-												#				<td class="hover-dp ts-meta">'.htmlentities($linha[1]).'</td>
-												#				<td class="dark-bg hover-dp ts-meta">'.htmlentities($linha[0]).'</td>
-												#				<td class="hover-dp ts-meta">'.htmlentities($linha[2]).'</td>
-												#				<td class="hover-dp ts-meta"><center><a href="altera.php?codigo='.$linha[0].'"><b>&#9997;</b></a></td>
-												#				<td class="hover-dp ts-meta"><center><a href="exclui.php?codigo='.$linha[0].'"><b>&#10006;</b></a></td>
-												#			</tr>';
-												#	}
+													while($linha=mysqli_fetch_row($tabela)){
+														if($linha[7]=='C'){
+															$cargo = 'Cliente';
+														}else{
+															$cargo = 'Instrutor';
+														}
+														
+														echo '<tr>
+																<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[2]).'</h5></td>
+																<td class="dark-bg hover-dp ts-meta"><h5>'.$cargo.'</h5></td>
+																<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[1]).'</h5></td>
+																<td class="dark-bg hover-dp ts-meta"><h5>'.htmlentities($linha[3]).'</h5></td>
+																<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[4]).'</h5></td>
+																<td class="dark-bg hover-dp ts-meta"><h5>'.htmlentities($linha[5]).'</h5></td>
+																<td class="hover-dp ts-meta"><h5><center><a href="altera.php?codigo='.$linha[0].'"><b>&#9997;</b></a></h5></td>
+																<td class="dark-bg hover-dp ts-meta"><h5><center><a href="exclui.php?codigo='.$linha[0].'"><b>&#10006;</b></a></h5></td>
+															</tr>';
+													}
 												?>	
 											</tr>-->
 										</tbody>
