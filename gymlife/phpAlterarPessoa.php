@@ -3,6 +3,9 @@
 	session_start();
 	if($_SESSION['cargo'] == 'instrutor'){
 		
+		$codigo='';
+		$codigo = $_POST['hddCodigo'];
+		
 		// Variaveis de consulta
 		$resultadoC = '';
 		$resultadoI = '';
@@ -31,52 +34,51 @@
 		$salarioI = $_POST['txtSalarioI']; // Salario
 		$cargaHI = $_POST['txtHorariaI']; // Carga Horaria
 		$imagemI = $_FILES['image']; // Imagem Instrutor
-		
 
 		if($cargo == 'C'){
-			
-			$sql = 'INSERT INTO Pessoa(CPF,Nome,Telefone,E_MAIL, Data_nascimento, Senha, Tipo_cargo)
-			  VALUES("'.$cpfC.'","'.$nomeC.'","'.$telefoneC.'","'.$emailC.'","'.$dataNascC.'","'.$senhaC.'","'.$cargo.'")';
+
+			$sql = "UPDATE Pessoa SET 	CPF = '".$cpfC."',
+										Nome = '".$nomeC."',
+										Telefone = '".$telefoneC."',
+										E_MAIL = '".$emailC."',
+										Data_nascimento = '".$dataNascC."',
+										Senha = '".$senhaC."',
+										Tipo_cargo = '".$cargo."'
+					WHERE idPessoa = '".$codigo."';
+			";
 			$resultado = mysqli_query($conexao,$sql);
 			
-			$sql='SELECT idPessoa FROM PESSOA WHERE CPF ="'.$cpfC.'";'; 
-			$tabela=mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-							
-										
-			while($linha=mysqli_fetch_row($tabela)){
-				$COD_Cliente= $linha[0];
-			}	
-			
-			$sql = 'INSERT INTO Cliente(Pessoa_idPessoa,PLANO_idPlano)
-					VALUES("'.$COD_Cliente.'","'.$planoC.'")';
+			$sql = "UPDATE Cliente SET 	PLANO_idPlano = '".$planoC."'
+					WHERE Pessoa_idPessoa = '".$codigo."';
+			";		
+
 			$resultadoC = mysqli_query($conexao,$sql);
 				
 				
 			// VERIFICA SE TUDO DEU CERTO
 			if ($resultadoC == true){
 				echo '<SCRIPT type="text/javascript"> //not showing me this
-							alert("Cliente inserido com sucesso!");
-							 window.location.replace("menu.php");
+							alert("Cliente alterado com sucesso!");
+							window.location.replace("menu.php");
 					</SCRIPT>';       
 			}else{
-				echo '<script>alert("Problema ao adicionar CLIENTE no banco de dados");</script>';
+				echo '<script>alert("Problema ao alterar CLIENTE no banco de dados");</script>';
 				echo 'O erro que aconteceu foi este: ' . mysqli_error($conexao).'<br>';
 				echo '<a href="menu.php"> VOLTAR </a>';
 			}
 			
 		}
 		if($cargo == 'I'){
-			
-			$sql = 'INSERT INTO Pessoa(CPF,Nome,Telefone,E_MAIL, Data_nascimento, Senha, Tipo_cargo)
-			  VALUES("'.$cpfI.'","'.$nomeI.'","'.$telefoneI.'","'.$emailI.'","'.$dataNascI.'","'.$senhaI.'","'.$cargo.'")';
+			$sql = "UPDATE Pessoa SET 	CPF = '".$cpfI."',
+										Nome = '".$nomeI."',
+										Telefone = '".$telefoneI."',
+										E_MAIL = '".$emailI."',
+										Data_nascimento = '".$dataNascI."',
+										Senha = '".$senhaI."',
+										Tipo_cargo = '".$cargo."'
+					WHERE idPessoa = '".$codigo."';
+			";
 			$resultadoI = mysqli_query($conexao,$sql);
-			
-			$sql='SELECT idPessoa FROM Pessoa WHERE CPF ="'.$cpfI.'";'; 
-			$tabela=mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-			
-			while($linha=mysqli_fetch_row($tabela)){
-				$COD_Instrutor = $linha[0];
-			}
 			
 			$uploaddir = 'imgInstrutores/';
 			$uploadfile = $uploaddir . basename($imagemI['name']);
@@ -88,19 +90,21 @@
 				print_r($_FILES);
 			}
 			
-			
-			$sql = 'INSERT INTO Instrutor(Pessoa_idPessoa,Salario,Carga_horaria, imagem)
-					VALUES("'.$COD_Instrutor.'","'.$salarioI.'","'.$cargaHI.'","'.$uploadfile.'")';
+			$sql = "UPDATE Instrutor SET	salario = '".$salarioI."',
+											Carga_horaria = '".$cargaHI."',
+											imagem = '".$uploadfile."'
+					WHERE Pessoa_idPessoa = '".$codigo."';
+			";		
 			$resultadoI = mysqli_query($conexao,$sql);
 			
 			// VERIFICA SE TUDO DEU CERTO
 			if($resultadoI == true){
 				echo '<SCRIPT type="text/javascript"> //not showing me this
-							alert("Instrutor inserido com sucesso!");
-							 window.location.replace("menu.php");
+							alert("Instrutor alterado com sucesso!");
+							window.location.replace("menu.php");
 					</SCRIPT>';    
 			}else{
-				echo '<script>alert("Problema ao adicionar INSTRUTOR no banco de dados");</script>';
+				echo '<script>alert("Problema ao alterar INSTRUTOR no banco de dados");</script>';
 				echo 'O erro que aconteceu foi este: ' . mysqli_error($conexao).'<br>';
 				echo '<a href="menu.php"> VOLTAR </a>';
 			}

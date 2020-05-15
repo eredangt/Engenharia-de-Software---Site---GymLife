@@ -243,6 +243,7 @@
                     </div>
                 </div>
                 
+                
                 <div class="col-lg-12">
                     <div class="leave-comment">
                         <form action="#" method="post" name="frmLogin">
@@ -295,7 +296,7 @@
 											</tr>-->
 												<?php
 													require('phpConexaoBD.php');                
-													$sql = 'SELECT * FROM Pessoa';
+													$sql = 'SELECT * FROM Pessoa ORDER BY Nome ASC';
 													$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
 																
 													while($linha=mysqli_fetch_row($tabela)){
@@ -312,8 +313,8 @@
 																<td class="dark-bg hover-dp ts-meta"><h5>'.htmlentities($linha[3]).'</h5></td>
 																<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[4]).'</h5></td>
 																<td class="dark-bg hover-dp ts-meta"><h5>'.htmlentities($linha[5]).'</h5></td>
-																<td class="hover-dp ts-meta"><h5><center><a href="altera.php?codigo='.$linha[0].'"><b>&#9997;</b></a></h5></td>
-																<td class="dark-bg hover-dp ts-meta"><h5><center><a href="exclui.php?codigo='.$linha[0].'"><b>&#10006;</b></a></h5></td>
+																<td class="hover-dp ts-meta"><h5><center><a href="alterarpessoa.php?codigo='.$linha[0].'"><b>&#9997;</b></a></h5></td>
+																<td class="dark-bg hover-dp ts-meta"><h5><center><a href="phpExcluirPessoa.php?codigo='.$linha[0].'"><b>&#10006;</b></a></h5></td>
 															</tr>';
 													}
 												?>	

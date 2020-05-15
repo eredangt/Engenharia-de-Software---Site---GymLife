@@ -10,7 +10,6 @@
                             window.location.replace("entrar.php");
                  </SCRIPT>';
 		}
-		$nomePessoa = 'Samuel';
 	?>
     <meta charset="UTF-8">
     <meta name="description" content="Gym Template">
@@ -209,7 +208,7 @@
 							$mensagem = '
 									<div class="col-lg-12">
 										<div class="section-title contact-title">
-											<span>Bem-Vindo(a) aluno(a), '.$nomePessoa.'!</span>
+											<span>Bem-Vindo(a) aluno(a), '.$_SESSION['login'].'!</span>
 											<h2>Encontre, aqui, tudo que precisa!</h2>
 										</div>
 								    <!-- Class Timetable Section Begin -->
@@ -365,7 +364,7 @@
 							$mensagem = '
 										<div class="col-lg-6">
 											<div class="section-title contact-title">
-												<span>Bem-Vindo(a) instrutor(a), '.$nomePessoa.'!</span>
+												<span>Bem-Vindo(a) instrutor(a), '.$_SESSION['login'].'!</span>
 												<h2>Encontre, aqui, tudo que precisa!</h2>
 											</div>
 											<div class="contact-widget">

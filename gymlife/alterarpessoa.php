@@ -22,7 +22,7 @@
     <meta name="keywords" content="Gym, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gym | Cadastrar Pessoa</title>
+    <title>Gym | Alterar Pessoa</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -192,11 +192,11 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb-text">
-                        <h2>CADASTRAR PESSOA</h2>
+                        <h2>ALTERAR PESSOA</h2>
                         <div class="bt-option">
                             <a href="./index.php">Início</a>
-                            <a href="./cadastrar.php">Cadastrar</a>
-                            <span>Cadastrar Pessoa</span>
+                            <a href="./listarpessoas.php">Listar Pessoas</a>
+                            <span>Alterar Pessoa</span>
                         </div>
                     </div>
                 </div>
@@ -209,9 +209,66 @@
     <section class="contact-section spad">
         <div class="container">
 			<div class="section-title contact-title">
-						<span>Cadastrar Pessoa</span>
-						<h2>Cadastre seus clientes e funcionários!</h2>
+						<span>Alterar Pessoa</span>
+						<h2>Altere seus clientes e funcionários!</h2>
 					</div>
+					
+				<?php
+					//faz a conexao com o banco de dados
+					require('phpConexaoBD.php');
+
+					//ACESSA O BANCO DE DADOS E COLETA AS INFORMACOES DA PESSOA QUE SERA ALTERADO
+					//captura o codigo do usuario
+					$codigo = $_GET['codigo'];
+					$sql = "SELECT * FROM Pessoa WHERE idPessoa='" . $codigo . "';";
+
+					$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+					$cpf = '';
+					$nome = '';
+					$telefone = '';
+					$email = '';
+					$dataNasc = '';
+					$senha = '';
+					$tipoCargo = '';
+
+					while ($linha = mysqli_fetch_row($tabela)) {
+						$cpf = $linha[1];
+						$nome = $linha[2];
+						$telefone = $linha[3];
+						$email = $linha[4];
+						$dataNasc = $linha[5];
+						$senha = $linha[6];
+						$tipoCargo = $linha[7];
+					}
+					
+					// COLETA DADOS DO CLIENTE
+					$sqlC = "SELECT * FROM Cliente WHERE Pessoa_idPessoa='" . $codigo . "';";
+
+					$tabelaC = mysqli_query($conexao, $sqlC) or die(mysqli_error($conexao));
+					
+					$planoCliente = '';
+					
+					while ($linhaC = mysqli_fetch_row($tabelaC)) {
+						$planoCliente = $linhaC[1];
+					}
+					
+					// COLETA DADOS DO INSTRUTOR
+					$sqlI = "SELECT * FROM Instrutor WHERE Pessoa_idPessoa='" . $codigo . "';";
+
+					$tabelaI = mysqli_query($conexao, $sqlI) or die(mysqli_error($conexao));
+					
+					$salarioInstrutor = '';
+					$cargaHorariaInstrutor = '';
+					$imagem = '';
+					
+					while ($linhaI = mysqli_fetch_row($tabelaI)) {
+						$salarioInstrutor = $linhaI[1];
+						$cargaHorariaInstrutor = $linhaI[2];
+						$imagem = $linhaI[3];
+					}
+					
+				?>  
             <div class="row">
 				<div class="col-lg-6 col-md-6">
                     <div class="class-item">
@@ -219,83 +276,91 @@
                             <img src="img/clients-4.jpg" alt="">
                         </div>
                     </div>
+					<div>
+						<span id="spanSpecial">FOTO DO(A) INSTRUTOR(A) <?php echo $nome;?></span>
+						<div class="ci-pic">
+							<img src="<?php echo $imagem?>"></img>
+						</div>
+						<small class="smallCadastro">ARQUIVO: <?php echo $imagem;?></small>
+					</div>
                 </div>
                 
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="phpCadastrarPessoa.php" method="POST" name="frmLogin" enctype="multipart/form-data">
+                        <form action="phpAlterarPessoa.php" method="POST" name="frmLogin" enctype="multipart/form-data">
+							<input type="hidden" name="hddCodigo" value="<?php echo $codigo; ?>">
 		                    <span id="spanSpecial">Tipo de Cadastro</span>
                             <select name="selecao" id="selectCadastro" class="meuSelect">
-                                <option value="Nenhum" selected>Escolha o tipo de cadastro</option>
-                                <option value="C">Cliente</option>
-                                <option value="I">Instrutor</option>
+                                <option value="C" <?php if($tipoCargo == 'C'){ echo 'selected'; } ?>>Cliente</option>
+                                <option value="I" <?php if($tipoCargo == 'I'){ echo 'selected'; } ?>>Instrutor</option>
                             </select>
 
                             <div class="Cliente_Selecionado" id="ClienteSel" style="display:none"> 
                                 <span id="spanSpecial">CPF do Cliente</span>
-                                <input type="text" name="txtCPFPessoaC" placeholder="Digite o número do CPF do Cliente" required>
+                                <input type="text" name="txtCPFPessoaC" value="<?php echo $cpf; ?>" required>
                                 <span id="spanSpecial">Nome do Cliente</span>
-                                <input type="text" name="txtNomeC" placeholder="Digite o nome do Cliente a ser cadastrado" required>
+                                <input type="text" name="txtNomeC" value="<?php echo $nome; ?>" required>
                                 <span id="spanSpecial">Número de Telefone</span>
-                                <input type="text" name="txtTelC" placeholder="Digite um número de telefone para contato" required>
+                                <input type="text" name="txtTelC" value="<?php echo $telefone; ?>" required>
                                 <span id="spanSpecial">Data de Nascimento</span>
-                                <input type="date" name="txtDataC" required>
+                                <input type="date" name="txtDataC" value="<?php echo $dataNasc; ?>" required>
                                 <span id="spanSpecial">Endereço Eletrônico</span>
                                 <br>
                                 <small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
-                                <input type="email" name="txtEmailC" placeholder="Digite um e-mail válido para contato" required>
+                                <input type="email" name="txtEmailC" value="<?php echo $email; ?>" required>
                                 <span id="spanSpecial">Senha do Cliente</span>
-                                <input type="password" name="senhaPessoaC" placeholder="Digite a senha do Cliente a ser cadastrado" required>
+                                <input type="text" name="senhaPessoaC" value="<?php echo $senha; ?>" required>
                                 <span id="spanSpecial">Plano a ser contratado pelo Cliente</span>
                                 <select name="selecaoPlanoC" id="selecaoPlano" class="meuSelect">
-                                    <option value="NoPlan" selected>ESCOLHA UM PLANO</option>
                                     <?php
 										require('phpConexaoBD.php');
 										
-										$sql='SELECT * FROM plano'; 
-										$tabela=mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
-																
-										while($linha=mysqli_fetch_row($tabela)){
-											echo '<option value="'.htmlentities($linha[0]).'">'.htmlentities($linha[1]).'</option>';
+										$sqlP = 'SELECT * FROM plano'; 
+										$tabelaP = mysqli_query($conexao,$sqlP) or die(mysqli_error($conexao));
+										
+										$selecionado = '';
+										while($linhaP=mysqli_fetch_row($tabelaP)){
+											if($planoCliente == $linhaP[0]){ 
+												$selecionado = 'selected'; 
+											}
+											echo '<option value="'.htmlentities($linhaP[0]).'" '.$selecionado.'>'.htmlentities($linhaP[1]).'</option>';
 										}
                                     ?>
                                 </select>
-                                <button type="submit">Cadastrar</button>
+                                <button type="submit">ALTERAR</button>
                             </div> 
                             <div class="Instrutor_Selecionado" id="InstrutorSel" style="display:none"> 
                             <span id="spanSpecial">CPF do Instrutor</span>
-                                <input type="text" name="txtCPFPessoaI" placeholder="Digite o número do CPF do Instrutor" required>
+                                <input type="text" name="txtCPFPessoaI" value="<?php echo $cpf; ?>" required>
                                 <span id="spanSpecial">Nome do Instrutor</span>
-                                <input type="text" name="txtNomeI" placeholder="Digite o nome do Instrutor a ser cadastrado" required>
+                                <input type="text" name="txtNomeI" value="<?php echo $nome; ?>" required>
                                 <span id="spanSpecial">Número de Telefone</span>
-                                <input type="text" name="txtTelI" placeholder="Digite um número de telefone para contato" required>
+                                <input type="text" name="txtTelI" value="<?php echo $telefone; ?>" required>
                                 <span id="spanSpecial">Data de Nascimento</span>
-                                <input type="date" name="txtDataI" required>
+                                <input type="date" name="txtDataI" value="<?php echo $dataNasc; ?>" required>
                                 <span id="spanSpecial">Endereço Eletrônico</span>
                                 <br>
                                 <small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
-                                <input type="email" name="txtEmailI" placeholder="Digite um e-mail válido para contato" required>
+                                <input type="email" name="txtEmailI" value="<?php echo $email; ?>" required>
                                 <span id="spanSpecial">Senha do Instrutor</span>
-                                <input type="password" name="senhaPessoaI" placeholder="Digite a senha do Instrutor a ser cadastrado" required>
+                                <input type="text" name="senhaPessoaI" value="<?php echo $senha; ?>" required>
                                 <span id="spanSpecial">Salário do Instrutor</span>
-                                <input type="number" name="txtSalarioI" placeholder="Digite o valor do salário do Instrutor a ser cadastrado" required>
+                                <input type="number" name="txtSalarioI" value="<?php echo $salarioInstrutor; ?>" required>
                                 <span id="spanSpecial">Carga Horária do Instrutor</span>
                                 <br>
                                 <small class="smallCadastro">A Carga Horária deverá ser um valor inteiro representando as horas.</small>
-                                <input type="number" name="txtHorariaI" placeholder="Digite a carga horária do Instrutor a ser cadastrado" required>
+                                <input type="number" name="txtHorariaI" value="<?php echo $cargaHorariaInstrutor; ?>" required>
+                                
                                 <span id="spanSpecial">Imagem Instrutor</span>
-                                <input type="file" name="image" accept="image/png, image/jpeg, image/jpg" required/>
-                                <button type="submit">Cadastrar</button>
+                                <input type="file" name="image" value="<?php echo $imagem; ?>"/>
+                                
+                                <button type="submit">ALTERAR</button>
                             </div> 
                             <br>
 
                             <script type="text/javascript">
                                 $(document).ready(function() { 
-                                    $('#selectCadastro').change(function() { 
-                                        if($('#selectCadastro').val() == 'Nenhum') {
-                                            $("#ClienteSel").hide("slow");
-                                            $("#InstrutorSel").hide("slow");
-                                        }
+                                    $('#selectCadastro').ready(function() {
                                         if($('#selectCadastro').val() == 'C') {
                                             $("#ClienteSel").show("slow");
                                             $("#InstrutorSel").hide("slow"); 
@@ -305,6 +370,16 @@
                                             $("#InstrutorSel").show("slow"); 
                                         }
                                     }); 
+                                    $('#selectCadastro').change(function() {
+                                        if($('#selectCadastro').val() == 'C') {
+                                            $("#ClienteSel").show("slow");
+                                            $("#InstrutorSel").hide("slow"); 
+                                        }
+                                        if($('#selectCadastro').val() == 'I') {
+                                            $("#ClienteSel").hide("slow");
+                                            $("#InstrutorSel").show("slow"); 
+                                        }
+                                    });
                                 }); 
                             </script>
                         </form>
@@ -460,3 +535,4 @@
 </body>
 
 </html>
+
