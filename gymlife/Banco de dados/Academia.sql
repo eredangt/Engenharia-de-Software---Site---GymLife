@@ -71,7 +71,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `Academia`.`Instrutor` (
   `Pessoa_idPessoa` INT(4) NOT NULL,
   `Salario` DECIMAL(6,2) NOT NULL,
-  `Carga_horaria` TIME NOT NULL,
+  `Carga_horaria` INT(11) NOT NULL,
+  `imagem` VARCHAR(300) NOT NULL,
   INDEX `fk_Funcionario_Pessoa1_idx` (`Pessoa_idPessoa` ASC),
   PRIMARY KEY (`Pessoa_idPessoa`),
   CONSTRAINT `fk_Funcionario_Pessoa1`
@@ -128,6 +129,14 @@ CREATE TABLE IF NOT EXISTS `Academia`.`Treino` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
+INSERT INTO `Academia`.`plano` (`Nome`, `numMeses`, `Valor`)
+VALUES ('Tope', '6', '100.00');
+
+INSERT INTO `Academia`.`pessoa` (`CPF`, `Nome`, `Telefone`, `E_MAIL`, `Data_nascimento`, `Senha`, `Tipo_cargo`)
+VALUES ('11122233344', 'Admin', '11233334444', 'admin@admin', '0001-01-01', 'admin', 'I');
+
+INSERT INTO `Academia`.`instrutor` (`Pessoa_idPessoa`, `Salario`, `Carga_horaria`, `imagem`)
+VALUES ('1', '9999.99', '0', 'imgInstrutores/Admin.jpg');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
