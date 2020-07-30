@@ -4,8 +4,8 @@
 		private $idCliente;
 		private $plano;
 		
-		public function __construct($cpf, $nome, $telefone, $email, $dataNasc, $senha, $cargo, $umPlano){
-			parent::__construct($cpf, $nome, $telefone, $email, $dataNasc, $senha, $cargo);
+		public function __construct($umPlano){
+			//parent::__construct($cpf, $nome, $telefone, $email, $dataNasc, $senha, $cargo);
 			//$this->idCliente = $umaIdC;
 			$this->plano = $umPlano;
 		}
