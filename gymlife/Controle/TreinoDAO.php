@@ -6,11 +6,27 @@
 		public function __construct(){}
 		
 		public function addTreino($treino, $con){
+			/*$COD_Func = '';
+			$COD_Equipamento = '';
+			
+			$valorCapturado = $treino->getTreinoIdFuncionario(); 
+			$sql = "SELECT * FROM Pessoa WHERE Tipo_cargo = 'I' AND idPessoa = '".$valorCapturado."';";
+			$tabela = mysqli_query($con,$sql) or die(mysqli_error($con));
+			
+			while($linha = mysqli_fetch_row($tabela)){
+				$COD_Func = $linha[0];
+			}	
+			
+			
+			echo $sql;
+			echo ' . ';
+			echo 'oi' . $valorCapturado;*/
+			
             $sql = "INSERT INTO Treino(Cliente_Pessoa_idPessoa, Funcionario_Pessoa_idPessoa, Equipamento_idEquipamento, Tipo_treino, serie, repeticoes, peso)
-                    VALUES('".$treino->getTreinoIdPessoa()."','".$treino->getTreinoIdFuncionario."','".$treino->getTreinoIdEquipamento."',
+                    VALUES('".$treino->getTreinoIdPessoa()."','".$treino->getTreinoIdFuncionario()."','".$treino->getTreinoIdEquipamento()."',
                     '".$treino->getTipo()."','".$treino->getSerie()."','".$treino->getRepeticoes()."','".$treino->getPeso()."');";
             
-            echo $sql;
+            echo $sql . '<br>';
             $resultadoT = mysqli_query($con,$sql) or die(mysqli_error($con));
             if($resultadoT == true){
                 echo 'Treino cadastrado.';

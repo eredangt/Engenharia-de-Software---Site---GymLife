@@ -25,7 +25,7 @@
 	$salarioI = '900.00';
 	$cHI = '20';
 	$imagem = 'abcdef.jpeg';
-	$codigo = '1';
+	$codigo = '31';
 	
 	// Nos arquivos que precisam de conectar com o BD
 	$conexao = new ConexaoBD();
@@ -70,19 +70,19 @@
 	//$equipDAO->atualizarEquipamento($nomeEquip, $qtdEquip, $marcaEquip, $anoEquip, $codigo, $conexao);
 	//$equipDAO->excluirEquipamento($codigo, $conexao);
 	
-	$idPes = '50';
-	$idFunc = '53';
+	$idPes = '37';
+	$idFunc = '16';
 	$idEquip = '2';
-	$tipo = 'A';
+	$tipo = 'C';
 	$serie = '4';
-	$repeticoes = '20';
-	$peso = '5';
+	$repeticoes = '15';
+	$peso = '10';
 	
 	$trein = new Treino($idPes, $idFunc, $idEquip, $tipo, $serie, $repeticoes, $peso);
 	$treinDAO = new TreinoDAO();
-	$treinDAO->addTreino($trein, $conexao);
+	//$treinDAO->addTreino($trein, $conexao);
 	//$treinDAO->atualizarTreino($idPes, $idFunc, $idEquip, $tipo, $serie, $repeticoes, $peso, $codigo, $conexao);
-	//$treinDAO->excluirTreino($codigo, $conexao);
+	$treinDAO->excluirTreino($codigo, $conexao);
 	
 	
 	/*
