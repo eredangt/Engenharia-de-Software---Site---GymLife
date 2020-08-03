@@ -1,7 +1,7 @@
 <?php
 	// Persistence
-	include_once('../Modelo/Cliente.php');
-	include_once('../Modelo/Pessoa.php');
+	include_once('Modelo/Cliente.php');
+	include_once('Modelo/Pessoa.php');
 	class ClienteDAO{
 		
 		public function __construct(){}
@@ -23,7 +23,10 @@
 			echo $sql; 
 			$resultadoC = mysqli_query($con,$sql) or die(mysqli_error($con));
 			if($resultadoC == true){
-				echo 'Cliente cadastrado.';
+				echo '<SCRIPT type="text/javascript"> //not showing me this
+								alert("Cliente cadastrado com sucesso!");
+								window.location.replace("listarpessoas.php");
+						</SCRIPT>';
 			}else{
 				echo 'Algo ocorreu: ' . mysqli_error($con);
 			}
@@ -37,11 +40,11 @@
 			$resultadoC = mysqli_query($con,$sql) or die(mysqli_error($con));
 			// VERIFICA SE TUDO DEU CERTO
 			if ($resultadoC == true){
-				echo 'Cliente alterado com sucesso';
-				/*echo '<SCRIPT type="text/javascript"> //not showing me this
+				//echo 'Cliente alterado com sucesso';
+				echo '<SCRIPT type="text/javascript"> //not showing me this
 							alert("Cliente alterado com sucesso!");
 							window.location.replace("menu.php");
-					</SCRIPT>';  */     
+					</SCRIPT>';  
 			}else{
 				echo '<script>alert("Problema ao alterar CLIENTE no banco de dados");</script>';
 				echo 'O erro que aconteceu foi este: ' . mysqli_error($con).'<br>';

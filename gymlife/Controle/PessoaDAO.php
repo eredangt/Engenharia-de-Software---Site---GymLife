@@ -14,7 +14,11 @@
 			echo $sql; 
 			$resultadoP = mysqli_query($con,$sql) or die(mysqli_error($con));
 			if($resultadoP == true){
-				echo 'Cadastrada pessoa.';
+				//echo 'Cadastrada pessoa.';
+				/*echo '<SCRIPT type="text/javascript"> //not showing me this
+								alert("Pessoa cadastrada com sucesso!");
+								window.location.replace("listarpessoas.php");
+						</SCRIPT>';*/
 			}else{
 				echo 'Algo ocorreu: ' . mysqli_error($con);
 			}
@@ -32,7 +36,11 @@
 			";
 			$resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
 			if($resultado == true){
-				echo 'Alterada a pessoa.';
+				//echo 'Alterada a pessoa.';
+				/*echo '<SCRIPT type="text/javascript"> //not showing me this
+								alert("Pessoa alterada com sucesso!");
+								window.location.replace("listarpessoas.php");
+						</SCRIPT>';*/
 			}else{
 				echo 'Algo ocorreu: ' . mysqli_error($con);
 			}
@@ -48,11 +56,11 @@
 
 			//avaliando o resultado
 			if ($resultado == true){
-				echo 'Excluída a Pessoa';
-				/*echo '<SCRIPT type="text/javascript"> //not showing me this
-								alert("Pessoa excluída com sucesso");
+				//echo 'Excluída a Pessoa';
+				echo '<SCRIPT type="text/javascript"> //not showing me this
+								alert("Pessoa excluída com sucesso!");
 								window.location.replace("listarpessoas.php");
-						</SCRIPT>';*/
+						</SCRIPT>';
 			}else{
 				echo 'Problema ao apagar o registro no banco de dados <br>';
 				echo 'O erro que aconteceu foi este: ' . mysqli_error($con);
