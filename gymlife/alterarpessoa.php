@@ -287,75 +287,83 @@
                 
                 <div class="col-lg-6">
                     <div class="leave-comment">
-                        <form action="phpAlterarPessoa.php" method="POST" name="frmLogin" enctype="multipart/form-data">
-							<input type="hidden" name="hddCodigo" value="<?php echo $codigo; ?>">
+                        <!--<form action="phpAlterarPessoa.php" method="POST" name="frmLogin" enctype="multipart/form-data" autocomplete="off">-->
 		                    <span id="spanSpecial">Tipo de Cadastro</span>
                             <select name="selecao" id="selectCadastro" class="meuSelect">
                                 <option value="C" <?php if($tipoCargo == 'C'){ echo 'selected'; } ?>>Cliente</option>
                                 <option value="I" <?php if($tipoCargo == 'I'){ echo 'selected'; } ?>>Instrutor</option>
                             </select>
 
-                            <div class="Cliente_Selecionado" id="ClienteSel" style="display:none"> 
-                                <span id="spanSpecial">CPF do Cliente</span>
-                                <input type="text" name="txtCPFPessoaC" value="<?php echo $cpf; ?>" required>
-                                <span id="spanSpecial">Nome do Cliente</span>
-                                <input type="text" name="txtNomeC" value="<?php echo $nome; ?>" required>
-                                <span id="spanSpecial">Número de Telefone</span>
-                                <input type="text" name="txtTelC" value="<?php echo $telefone; ?>" required>
-                                <span id="spanSpecial">Data de Nascimento</span>
-                                <input type="date" name="txtDataC" value="<?php echo $dataNasc; ?>" required>
-                                <span id="spanSpecial">Endereço Eletrônico</span>
-                                <br>
-                                <small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
-                                <input type="email" name="txtEmailC" value="<?php echo $email; ?>" required>
-                                <span id="spanSpecial">Senha do Cliente</span>
-                                <input type="text" name="senhaPessoaC" value="<?php echo $senha; ?>" required>
-                                <span id="spanSpecial">Plano a ser contratado pelo Cliente</span>
-                                <select name="selecaoPlanoC" id="selecaoPlano" class="meuSelect">
-                                    <?php
-										require('phpConexaoBD.php');
-										
-										$sqlP = 'SELECT * FROM plano'; 
-										$tabelaP = mysqli_query($conexao,$sqlP) or die(mysqli_error($conexao));
-										
-										$selecionado = '';
-										while($linhaP=mysqli_fetch_row($tabelaP)){
-											if($planoCliente == $linhaP[0]){ 
-												$selecionado = 'selected'; 
+		
+							<form action="phpAlterarPessoa.php" method="POST" name="frmLogin" enctype="multipart/form-data" autocomplete="off">
+								<div class="Cliente_Selecionado" id="ClienteSel" style="display:none"> 
+									<input type="hidden" name="hddCodigo" value="<?php echo $codigo; ?>">
+									<input type="hidden" name="selecao" value="C">
+									<span id="spanSpecial">CPF do Cliente</span>
+									<input type="text" name="txtCPFPessoaC" value="<?php echo $cpf; ?>" required>
+									<span id="spanSpecial">Nome do Cliente</span>
+									<input type="text" name="txtNomeC" value="<?php echo $nome; ?>" required>
+									<span id="spanSpecial">Número de Telefone</span>
+									<input type="text" name="txtTelC" value="<?php echo $telefone; ?>" required>
+									<span id="spanSpecial">Data de Nascimento</span>
+									<input type="date" name="txtDataC" value="<?php echo $dataNasc; ?>" required>
+									<span id="spanSpecial">Endereço Eletrônico</span>
+									<br>
+									<small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
+									<input type="email" name="txtEmailC" value="<?php echo $email; ?>" required>
+									<span id="spanSpecial">Senha do Cliente</span>
+									<input type="text" name="senhaPessoaC" value="<?php echo $senha; ?>" required>
+									<span id="spanSpecial">Plano a ser contratado pelo Cliente</span>
+									<select name="selecaoPlanoC" id="selecaoPlano" class="meuSelect" required>
+										<?php
+											require('phpConexaoBD.php');
+											
+											$sqlP = 'SELECT * FROM plano'; 
+											$tabelaP = mysqli_query($conexao,$sqlP) or die(mysqli_error($conexao));
+											
+											$selecionado = '';
+											while($linhaP=mysqli_fetch_row($tabelaP)){
+												if($planoCliente == $linhaP[0]){ 
+													$selecionado = 'selected'; 
+												}
+												echo '<option value="'.htmlentities($linhaP[0]).'" '.$selecionado.'>'.htmlentities($linhaP[1]).'</option>';
 											}
-											echo '<option value="'.htmlentities($linhaP[0]).'" '.$selecionado.'>'.htmlentities($linhaP[1]).'</option>';
-										}
-                                    ?>
-                                </select>
-                                <button type="submit">ALTERAR</button>
-                            </div> 
-                            <div class="Instrutor_Selecionado" id="InstrutorSel" style="display:none"> 
-                            <span id="spanSpecial">CPF do Instrutor</span>
-                                <input type="text" name="txtCPFPessoaI" value="<?php echo $cpf; ?>" required>
-                                <span id="spanSpecial">Nome do Instrutor</span>
-                                <input type="text" name="txtNomeI" value="<?php echo $nome; ?>" required>
-                                <span id="spanSpecial">Número de Telefone</span>
-                                <input type="text" name="txtTelI" value="<?php echo $telefone; ?>" required>
-                                <span id="spanSpecial">Data de Nascimento</span>
-                                <input type="date" name="txtDataI" value="<?php echo $dataNasc; ?>" required>
-                                <span id="spanSpecial">Endereço Eletrônico</span>
-                                <br>
-                                <small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
-                                <input type="email" name="txtEmailI" value="<?php echo $email; ?>" required>
-                                <span id="spanSpecial">Senha do Instrutor</span>
-                                <input type="text" name="senhaPessoaI" value="<?php echo $senha; ?>" required>
-                                <span id="spanSpecial">Salário do Instrutor</span>
-                                <input type="number" name="txtSalarioI" value="<?php echo $salarioInstrutor; ?>" required>
-                                <span id="spanSpecial">Carga Horária do Instrutor</span>
-                                <br>
-                                <small class="smallCadastro">A Carga Horária deverá ser um valor inteiro representando as horas.</small>
-                                <input type="number" name="txtHorariaI" value="<?php echo $cargaHorariaInstrutor; ?>" required>
-                                
-                                <span id="spanSpecial">Imagem Instrutor</span>
-                                <input type="file" name="image" value="<?php echo $imagem; ?>"/>
-                                
-                                <button type="submit">ALTERAR</button>
-                            </div> 
+										?>
+									</select>
+									<button type="submit">ALTERAR</button>
+								</div> 
+                            </form>
+                            <form action="phpAlterarPessoa.php" method="POST" name="frmLogin" enctype="multipart/form-data" autocomplete="off">
+								<div class="Instrutor_Selecionado" id="InstrutorSel" style="display:none"> 
+									<input type="hidden" name="hddCodigo" value="<?php echo $codigo; ?>">
+									<input type="hidden" name="selecao" value="I">
+									<span id="spanSpecial">CPF do Instrutor</span>
+									<input type="text" name="txtCPFPessoaI" value="<?php echo $cpf; ?>" required>
+									<span id="spanSpecial">Nome do Instrutor</span>
+									<input type="text" name="txtNomeI" value="<?php echo $nome; ?>" required>
+									<span id="spanSpecial">Número de Telefone</span>
+									<input type="text" name="txtTelI" value="<?php echo $telefone; ?>" required>
+									<span id="spanSpecial">Data de Nascimento</span>
+									<input type="date" name="txtDataI" value="<?php echo $dataNasc; ?>" required>
+									<span id="spanSpecial">Endereço Eletrônico</span>
+									<br>
+									<small class="smallCadastro">O E-mail deverá também ser utilizado como login.</small>
+									<input type="email" name="txtEmailI" value="<?php echo $email; ?>" required>
+									<span id="spanSpecial">Senha do Instrutor</span>
+									<input type="text" name="senhaPessoaI" value="<?php echo $senha; ?>" required>
+									<span id="spanSpecial">Salário do Instrutor</span>
+									<input type="number" name="txtSalarioI" value="<?php echo $salarioInstrutor; ?>" required>
+									<span id="spanSpecial">Carga Horária do Instrutor</span>
+									<br>
+									<small class="smallCadastro">A Carga Horária deverá ser um valor inteiro representando as horas.</small>
+									<input type="number" name="txtHorariaI" value="<?php echo $cargaHorariaInstrutor; ?>" required>
+									
+									<span id="spanSpecial">Imagem Instrutor</span>
+									<input type="file" name="image" value="<?php echo $imagem; ?>"/>
+									
+									<button type="submit">ALTERAR</button>
+								</div> 
+                            </form>
                             <br>
 
                             <script type="text/javascript">

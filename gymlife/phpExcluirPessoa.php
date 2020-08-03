@@ -1,33 +1,26 @@
 <?php
-	require('phpConexaoBD.php'); 
+	include_once('Persistencia/ConexaoBD.php');
+	include_once('Modelo/Pessoa.php');
+	include_once('Controle/PessoaDAO.php');
+	include_once('Modelo/Cliente.php');
+	include_once('Controle/ClienteDAO.php');
+	include_once('Modelo/Instrutor.php');
+	include_once('Controle/InstrutorDAO.php');
 	session_start();
-	
+
 	if ($_SESSION['cargo'] == 'instrutor'){
 		$codigo = $_GET['codigo'];
+		$conexao = new ConexaoBD();
+		$conexao = $conexao->abreConexao();
 
-		//criar a string sql que exclui o usuario do banco de dados
-		$sql = "DELETE FROM Pessoa WHERE idPessoa=".$codigo.";";
-
-		//executa o comando DELETE no banco de dados para o usuario que tem
-		//aquele codigo especifico
-		$resultado = mysqli_query($conexao, $sql);
-
-		//avaliando o resultado
-		if ($resultado == true){
-			echo '<SCRIPT type="text/javascript"> //not showing me this
-							alert("Pessoa excluída com sucesso");
-							window.location.replace("listarpessoas.php");
-					</SCRIPT>';
-		}else{
-			echo 'Problema ao apagar o registro no banco de dados <br>';
-			echo 'O erro que aconteceu foi este: ' . mysqli_error($conexao);
-			echo '<a href="menu.php"> MENU </a>';
-		}
+		$pessoaDAO = new PessoaDAO();
+		$pessoaDAO->excluirPessoa($codigo, $conexao);
+		
 	}else{
 		echo '<SCRIPT type="text/javascript"> //not showing me this
 						alert("Você não tem permissão para entrar aqui.");
 						window.location.replace("menu.php");
 			  </SCRIPT>';
 	}
-	
+
 ?>
