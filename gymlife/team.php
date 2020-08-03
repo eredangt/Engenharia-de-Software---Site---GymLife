@@ -234,33 +234,41 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-sm-6">
+                <!--<div class="col-lg-4 col-sm-6">
                     <div class="ts-item set-bg" data-setbg="img/team/team-1.jpg">
                         <div class="ts_text">
                             <h4>Athart Rachel</h4>
                             <span>Treinador</span>
-                            <!--<div class="tt_social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa  fa-envelope-o"></i></a>
-                            </div>-->
                         </div>
                     </div>
-                </div>
+                </div>-->
+                
+                <?php
+					//faz a conexao com o banco de dados
+					require('phpConexaoBD.php');
+					
+					$sql = "SELECT P.nome, I.imagem FROM Pessoa as P, Instrutor as I ORDER BY P.nome";
+					$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+					while ($linha = mysqli_fetch_row($tabela)) {
+						echo '<div class="col-lg-4 col-sm-6">
+                    <div class="ts-item set-bg" data-setbg="' . $linha[1] .'">
+                    <div class="ts_text">
+                            <h4>'.$linha[0].'</h4>
+                            <span>Treinador</span>
+                        </div>
+                    </div>
+                </div>';
+					}
+					
+                ?>
+                
+                <!--
                 <div class="col-lg-4 col-sm-6">
                     <div class="ts-item set-bg" data-setbg="img/team/team-2.jpg">
                         <div class="ts_text">
                             <h4>Athart Rachel</h4>
                             <span>Treinador</span>
-                            <!--<div class="tt_social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa  fa-envelope-o"></i></a>
-                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -269,13 +277,7 @@
                         <div class="ts_text">
                             <h4>Athart Rachel</h4>
                             <span>Treinador</span>
-                            <!--<div class="tt_social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa  fa-envelope-o"></i></a>
-                            </div>-->
+                           
                         </div>
                     </div>
                 </div>
@@ -284,13 +286,6 @@
                         <div class="ts_text">
                             <h4>Athart Rachel</h4>
                             <span>Treinador</span>
-                            <!--<div class="tt_social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa  fa-envelope-o"></i></a>
-                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -299,13 +294,6 @@
                         <div class="ts_text">
                             <h4>Athart Rachel</h4>
                             <span>Treinador</span>
-                            <!--<div class="tt_social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa  fa-envelope-o"></i></a>
-                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -314,16 +302,9 @@
                         <div class="ts_text">
                             <h4>Athart Rachel</h4>
                             <span>Treinador</span>
-                            <!--<div class="tt_social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa  fa-envelope-o"></i></a>
-                            </div>-->
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </section>
