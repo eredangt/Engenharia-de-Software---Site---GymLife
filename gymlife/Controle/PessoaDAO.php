@@ -35,8 +35,8 @@
 
 		}
 
-		public function implementaRestricaoDeslogar($login){
-			if(isset($login)){
+		public function implementaRestricaoDeslogar(){
+			if(isset($_SESSION['login'])){
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 	                            alert("Deslogue para acessar esta página!");
 	                            window.location.replace("../Visualizacao/menu.php");

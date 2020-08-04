@@ -5,5 +5,4 @@
 	$db = 'academia';
 
 	$conexao = mysqli_connect($host,$user,$password,$db);
-	
 ?>

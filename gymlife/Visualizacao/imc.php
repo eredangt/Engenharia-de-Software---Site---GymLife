@@ -2,11 +2,15 @@
 <html lang="zxx">
 
 <head>
-
     <?php
 		session_start();
+        include_once('../Persistencia/ConexaoBD.php');
+        include_once('../Modelo/Pessoa.php');
+        include_once('../Controle/PessoaDAO.php');
+        $conexao = new ConexaoBD();
+        $conexao = $conexao->abreConexao();
+        $pessoaDAO = new PessoaDAO();
     ?>
-
     <meta charset="UTF-8">
     <meta name="description" content="Gym Template">
     <meta name="keywords" content="Gym, unica, creative, html">
@@ -41,9 +45,6 @@
         <div class="canvas-close">
             <i class="fa fa-close"></i>
         </div>
-        <!--<div class="canvas-search search-switch">
-            <i class="fa fa-search"></i>
-        </div>-->
         <nav class="canvas-menu mobile-menu">
             <ul>
                 <li><a href="./index.php">Início</a></li>
@@ -52,54 +53,15 @@
                 <li><a href="./modalidades.php">Modalidades</a></li>
                 <li><a href="./team.php">Nossa equipe</a></li>
                 <li><a href="./imc.php">IMC</a></li>
-                <!-- <li><a href="#">Pages</a>
-                    <ul class="dropdown">
-                        <li><a href="./about-us.html">About us</a></li>
-                        <li><a href="./class-timetable.html">Classes timetable</a></li>
-                        <li><a href="./bmi-calculator.html">Bmi calculate</a></li>
-                        <li><a href="./team.html">Our team</a></li>
-                        <li><a href="./gallery.html">Gallery</a></li>
-                        <li><a href="./blog.html">Our blog</a></li>
-                        <li><a href="./404.html">404</a></li>
-                    </ul>
-                </li>-->
-				 <?php
-					if(isset($_SESSION['login']))
-					{
-						echo '<li><a href="./menu.php">Menu</a></li>';
-						if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'instrutor'){
-							echo '<li><a href="cadastrar.php">Cadastrar</a>
-										<ul class="dropdown">
-											<li><a href="cadastrarpessoa.php">Pessoa</a></li>
-											<li><a href="cadastrartreino.php">Treino</a></li>
-											<li><a href="cadastrarequipamento.php">Equipamento</a></li>
-											<li><a href="cadastrarplano.php">Plano</a></li>
-										</ul>
-									</li>
-									<li><a href="listar.php">Listar</a>
-										<ul class="dropdown">
-											<li><a href="listarpessoas.php">Pessoas</a></li>
-											<li><a href="listartreinos.php">Treinos</a></li>
-											<li><a href="listarequipamentos.php">Equipamentos</a></li>
-											<li><a href="listarplanos.php">Planos</a></li>
-										</ul>
-									</li>';
-						}
-					}
-					else{
-						echo '<li><a href="./entrar.php">Login</a></li>';
-					}
-					
-				?>
+                <?php
+				   $pessoaDAO->implementaMenu();
+			   ?>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="canvas-social">
             <?php
-                if(isset($_SESSION['login']))
-                {
-                    echo '<a href="../Controle/logout.php">Log Out</a>';
-                }
+				$pessoaDAO->implementaLogOut();
             ?>
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -129,59 +91,17 @@
                             <li><a href="./modalidades.php">Modalidades</a></li>
                             <li><a href="./team.php">Nossa equipe</a></li>
                             <li class="active"><a href="./imc.php">IMC</a></li>
-                            <!--<li><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="./about-us.html">About us</a></li>
-                                    <li><a href="./class-timetable.html">Classes timetable</a></li>
-                                    <li><a href="./bmi-calculator.html">Bmi calculate</a></li>
-                                    <li><a href="./team.html">Our team</a></li>
-                                    <li><a href="./gallery.html">Gallery</a></li>
-                                    <li><a href="./blog.html">Our blog</a></li>
-                                    <li><a href="./404.html">404</a></li>
-                                </ul>
-                            </li>-->
-							<?php
-                                if(isset($_SESSION['login']))
-                                {
-                                    echo '<li><a href="./menu.php">Menu</a></li>';
-                            
-									if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'instrutor'){
-											echo '<li><a href="cadastrar.php">Cadastrar</a>
-												<ul class="dropdown">
-													<li><a href="cadastrarpessoa.php">Pessoa</a></li>
-													<li><a href="cadastrartreino.php">Treino</a></li>
-													<li><a href="cadastrarequipamento.php">Equipamento</a></li>
-													<li><a href="cadastrarplano.php">Plano</a></li>
-												</ul>
-											</li>
-											<li><a href="listar.php">Listar</a>
-												<ul class="dropdown">
-													<li><a href="listarpessoas.php">Pessoas</a></li>
-													<li><a href="listartreinos.php">Treinos</a></li>
-													<li><a href="listarequipamentos.php">Equipamentos</a></li>
-													<li><a href="listarplanos.php">Planos</a></li>
-												</ul>
-											</li>';
-									}
-								}
-                                else{
-                                    echo '<li><a href="./entrar.php">Login</a></li>';
-                                }
-							?>
+                            <?php
+            				   $pessoaDAO->implementaMenu();
+            			   ?>
                         </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
                     <div class="top-option">
-                        <!--<div class="to-search search-switch">
-                            <i class="fa fa-search"></i>
-                        </div>-->
                         <div class="to-social">
                             <?php
-                                if(isset($_SESSION['login']))
-                                {
-                                    echo '<a href="../Controle/logout.php">Log Out</a>';
-                                }
+                				$pessoaDAO->implementaLogOut();
                             ?>
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -207,7 +127,6 @@
                         <h2>CALCULADORA DE IMC</h2>
                         <div class="bt-option">
                             <a href="./index.php">Início</a>
-                            <!--<a href="#">Pages</a>-->
                             <span>IMC</span>
                         </div>
                     </div>
@@ -270,7 +189,7 @@
                         <form action="">
                             <script language='JavaScript'>
                                 function SomenteNumero(e){
-                                    var tecla = (window.event)?event.keyCode:e.which;   
+                                    var tecla = (window.event)?event.keyCode:e.which;
                                     if(tecla > 47 && tecla < 58) return true;
                                     else{
     	                                if (tecla == 8 || tecla == 0) return true;
@@ -369,13 +288,6 @@
                         </div>
                         <p>Com você para uma vida mais saudável, feliz e de bem consigo mesmo.
                             Venha nos fazer um visita.</p>
-                        <!--<div class="fa-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa  fa-envelope-o"></i></a>
-                        </div>-->
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-6">
@@ -386,54 +298,23 @@
                             <li><a href="./aulas.php">Aulas</a></li>
                             <li><a href="./modalidades.php">Modalidades</a></li>
                             <?php
-                                if(isset($_SESSION['login']))
-                                {
-                                    echo '<li><a href="./menu.php">Menu</a></li>';
-                                }
-                                else{
-                                    echo '<li><a href="./entrar.php">Login</a></li>';
-                                }
-                            ?>
+								include_once('../Persistencia/ConexaoBD.php');
+								include_once('../Modelo/Pessoa.php');
+								include_once('../Controle/PessoaDAO.php');
+								$conexao = new ConexaoBD();
+								$conexao = $conexao->abreConexao();
+								$pessoaDAO = new PessoaDAO();
+								$pessoaDAO->implementaRodape($_SESSION['login']);
+				            ?>
                         </ul>
                     </div>
                 </div>
-                <!--<div class="col-lg-2 col-md-3 col-sm-6">
-                    <div class="fs-widget">
-                        <h4>Support</h4>
-                        <ul>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">My account</a></li>
-                            <li><a href="#">Subscribe</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>-->
-                <!--<div class="col-lg-4 col-md-6">
-                    <div class="fs-widget">
-                        <h4>Tips & Guides</h4>
-                        <div class="fw-recent">
-                            <h6><a href="#">Physical fitness may help prevent depression, anxiety</a></h6>
-                            <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
-                            </ul>
-                        </div>
-                        <div class="fw-recent">
-                            <h6><a href="#">Fitness: The best exercise to lose belly fat and tone up...</a></h6>
-                            <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>-->
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="copyright-text">
-                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                        <p>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
                     </div>
                 </div>
             </div>
@@ -453,6 +334,7 @@
     <!-- Search model end -->
 
     <!-- Js Plugins -->
+	<script src="../js/jquery-1.12.4.min.js"></script>
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/jquery.magnific-popup.min.js"></script>

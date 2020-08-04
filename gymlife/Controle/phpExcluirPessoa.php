@@ -15,11 +15,11 @@
 
 		$pessoaDAO = new PessoaDAO();
 		$pessoaDAO->excluirPessoa($codigo, $conexao);
-		
+
 	}else{
 		echo '<SCRIPT type="text/javascript"> //not showing me this
 						alert("Você não tem permissão para entrar aqui.");
-						window.location.replace("menu.php");
+						window.location.replace("../Visualizacao/menu.php");
 			  </SCRIPT>';
 	}
 

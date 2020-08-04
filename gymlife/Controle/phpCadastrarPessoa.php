@@ -21,7 +21,7 @@
 		$imagemI = '';
 
 		if($cargo == 'C'){
-				
+
 			$cpfC = $_POST['txtCPFPessoaC']; // CPF
 			$nomeC = $_POST['txtNomeC']; // Nome
 			$telefoneC = $_POST['txtTelC']; // Telefone
@@ -29,7 +29,7 @@
 			$dataNascC = $_POST['txtDataC']; // Data de Nascimento
 			$senhaC = $_POST['senhaPessoaC']; // Senha
 			$planoC = $_POST['selecaoPlanoC']; // Plano adquirido
-			
+
 			// Nos arquivos que precisam de conectar com o BD
 			$conexao = new ConexaoBD();
 			$conexao = $conexao->abreConexao();
@@ -45,7 +45,7 @@
 
 		}
 		if($cargo == 'I'){
-			
+
 			$cpfI = $_POST['txtCPFPessoaI']; // CPF
 			$nomeI = $_POST['txtNomeI']; // Nome
 			$telefoneI = $_POST['txtTelI']; // Telefone
@@ -55,7 +55,7 @@
 			$salarioI = $_POST['txtSalarioI']; // Salario
 			$cargaHI = $_POST['txtHorariaI']; // Carga Horaria
 			$imagemI = $_FILES['image']; // Imagem Instrutor
-			
+
 			// Nos arquivos que precisam de conectar com o BD
 			$conexao = new ConexaoBD();
 			$conexao = $conexao->abreConexao();
@@ -64,7 +64,7 @@
 
 			$pessoaDAO = new PessoaDAO();
 			$pessoaDAO->addPessoa($p, $conexao);
-			
+
 			$uploaddir = 'imgInstrutores/';
 			$uploadfile = $uploaddir . basename($imagemI['name']);
 			if (move_uploaded_file($imagemI['tmp_name'], $uploadfile)){
@@ -84,7 +84,7 @@
 	}else{
 		echo '<SCRIPT type="text/javascript"> //not showing me this
 						alert("Você não tem permissão para entrar aqui.");
-						window.location.replace("menu.php");
+						window.location.replace("../Visualizacao/menu.php");
 			  </SCRIPT>';
 	}
 ?>
