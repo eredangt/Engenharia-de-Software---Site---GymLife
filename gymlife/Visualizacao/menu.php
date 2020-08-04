@@ -9,7 +9,7 @@
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();
-		$pessoaDAO->implementaRestricaoLogar($_SESSION['login']);
+		$pessoaDAO->implementaRestricaoLogar();
 /*
 		if(!isset($_SESSION['login']))
 		{
@@ -77,13 +77,7 @@
                 </li>-->
                 <li><a href="./menu.php">Menu</a></li>
 				<?php
-					include_once('../Persistencia/ConexaoBD.php');
-					include_once('../Modelo/Pessoa.php');
-					include_once('../Controle/PessoaDAO.php');
-					$conexao = new ConexaoBD();
-					$conexao = $conexao->abreConexao();
-					$pessoaDAO = new PessoaDAO();
-					$pessoaDAO->implementaMenu($_SESSION['login'], $_SESSION['cargo']);
+					$pessoaDAO->implementaMenu();
                 ?>
 
             </ul>
@@ -132,7 +126,7 @@
                             </li>-->
                             <li class="active"><a href="./menu.php">Menu</a></li>
                             <?php
-								if($_SESSION['cargo'] == 'instrutor'){
+								if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'instrutor'){
 										echo '<li><a href="cadastrar.php">Cadastrar</a>
 											<ul class="dropdown">
 												<li><a href="cadastrarpessoa.php">Pessoa</a></li>
@@ -201,7 +195,7 @@
             <div class="row">
                     <?php
 						$mensagem = '';
-						if($_SESSION['cargo'] == 'aluno'){
+						if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'aluno'){
 							$mensagem = '
 									<div class="col-lg-12">
 										<div class="section-title contact-title">
@@ -483,13 +477,7 @@
                             <li><a href="./aulas.php">Aulas</a></li>
                             <li><a href="./modalidades.php">Modalidades</a></li>
 							<?php
-								include_once('../Persistencia/ConexaoBD.php');
-								include_once('../Modelo/Pessoa.php');
-								include_once('../Controle/PessoaDAO.php');
-								$conexao = new ConexaoBD();
-								$conexao = $conexao->abreConexao();
-								$pessoaDAO = new PessoaDAO();
-								$pessoaDAO->implementaRodape($_SESSION['login']);
+								$pessoaDAO->implementaRodape();
 							?>
                         </ul>
                     </div>
@@ -558,9 +546,6 @@
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
-
-
-
 </body>
 
 </html>

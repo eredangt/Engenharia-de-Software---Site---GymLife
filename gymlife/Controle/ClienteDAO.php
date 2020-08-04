@@ -1,7 +1,7 @@
 <?php
 	// Persistence
-	include_once('Modelo/Cliente.php');
-	include_once('Modelo/Pessoa.php');
+	include_once('../Modelo/Cliente.php');
+	include_once('../Modelo/Pessoa.php');
 	class ClienteDAO{
 		
 		public function __construct(){}

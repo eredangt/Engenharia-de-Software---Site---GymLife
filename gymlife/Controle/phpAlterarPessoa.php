@@ -1,10 +1,10 @@
 <?php
-	include_once('Persistencia/ConexaoBD.php');
-	include_once('Modelo/Pessoa.php');
+	include_once('../Persistencia/ConexaoBD.php');
+	include_once('../Modelo/Pessoa.php');
 	include_once('Controle/PessoaDAO.php');
-	include_once('Modelo/Cliente.php');
+	include_once('../Modelo/Cliente.php');
 	include_once('Controle/ClienteDAO.php');
-	include_once('Modelo/Instrutor.php');
+	include_once('../Modelo/Instrutor.php');
 	include_once('Controle/InstrutorDAO.php');
 
 	//require('phpConexaoBD.php');

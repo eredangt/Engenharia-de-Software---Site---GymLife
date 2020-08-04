@@ -19,14 +19,14 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/barfiller.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
 </head>
 
 <body>
@@ -68,7 +68,7 @@
 					{
 						echo '<li><a href="./menu.php">Menu</a></li>';
 						
-						if($_SESSION['cargo'] == 'instrutor'){
+						if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'instrutor'){
 							echo '<li><a href="cadastrar.php">Cadastrar</a>
 										<ul class="dropdown">
 											<li><a href="cadastrarpessoa.php">Pessoa</a></li>
@@ -100,7 +100,7 @@
             <?php
                 if(isset($_SESSION['login']))
                 {
-                    echo '<a href="logout.php">Log Out</a>';
+                    echo '<a href="../Controle/logout.php">Log Out</a>';
                 }
             ?>
             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -118,7 +118,7 @@
                 <div class="col-lg-3">
                     <div class="logo">
                         <a href="./index.php">
-                            <img src="img/logo.png" alt="">
+                            <img src="../img/logo.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -147,7 +147,7 @@
                                 {
                                     echo '<li><a href="./menu.php">Menu</a></li>';
                                     
-                                    if($_SESSION['cargo'] == 'instrutor'){
+                                    if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'instrutor'){
 										echo '<li><a href="cadastrar.php">Cadastrar</a>
 											<ul class="dropdown">
 												<li><a href="cadastrarpessoa.php">Pessoa</a></li>
@@ -183,7 +183,7 @@
                             <?php
                                 if(isset($_SESSION['login']))
                                 {
-                                    echo '<a href="logout.php">Log Out</a>';
+                                    echo '<a href="../Controle/logout.php">Log Out</a>';
                                 }
                             ?>
                             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -202,7 +202,7 @@
     <!-- Header End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb-bg.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="../img/breadcrumb-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -233,7 +233,7 @@
             <div class="row">
                 <div class="col-lg-3 order-lg-1 col-md-6 p-0">
                     <div class="ss-pic">
-                        <img src="img/services/services-1.jpg" alt="">
+                        <img src="../img/services/services-1.jpg" alt="">
                     </div>
                 </div>
                 <div class="col-lg-3 order-lg-2 col-md-6 p-0">
@@ -245,7 +245,7 @@
                 </div>
                 <div class="col-lg-3 order-lg-3 col-md-6 p-0">
                     <div class="ss-pic">
-                        <img src="img/services/services-2.jpg" alt="">
+                        <img src="../img/services/services-2.jpg" alt="">
                     </div>
                 </div>
                 <div class="col-lg-3 order-lg-4 col-md-6 p-0">
@@ -257,7 +257,7 @@
                 </div>
                 <div class="col-lg-3 order-lg-8 col-md-6 p-0">
                     <div class="ss-pic">
-                        <img src="img/services/services-4.jpg" alt="">
+                        <img src="../img/services/services-4.jpg" alt="">
                     </div>
                 </div>
                 <div class="col-lg-3 order-lg-7 col-md-6 p-0">
@@ -269,7 +269,7 @@
                 </div>
                 <div class="col-lg-3 order-lg-6 col-md-6 p-0">
                     <div class="ss-pic">
-                        <img src="img/services/services-3.jpg" alt="">
+                        <img src="../img/services/services-3.jpg" alt="">
                     </div>
                 </div>
                 <div class="col-lg-3 order-lg-5 col-md-6 p-0">
@@ -285,7 +285,7 @@
     <!-- Services Section End -->
 
     <!-- Banner Section Begin -->
-    <!--<section class="banner-section set-bg" data-setbg="img/banner-bg.jpg">
+    <!--<section class="banner-section set-bg" data-setbg="../img/banner-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -412,7 +412,7 @@
                 <div class="col-lg-4">
                     <div class="fs-about">
                         <div class="fa-logo">
-                            <a href="#"><img src="img/logo.png" alt=""></a>
+                            <a href="#"><img src="../img/logo.png" alt=""></a>
                         </div>
                         <p>Com você para uma vida mais saudável, feliz e de bem consigo mesmo.
                             Venha nos fazer um visita.</p>
@@ -500,17 +500,14 @@
     <!-- Search model end -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/masonry.pkgd.min.js"></script>
-    <script src="js/jquery.barfiller.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-
-
-
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/masonry.pkgd.min.js"></script>
+    <script src="../js/jquery.barfiller.js"></script>
+    <script src="../js/jquery.slicknav.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

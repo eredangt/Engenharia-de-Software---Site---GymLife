@@ -5,6 +5,8 @@
 
     <?php
 		session_start();
+        include_once('../Controle/PessoaDAO.php');
+        $pessoaDAO = new PessoaDAO();
     ?>
 
     <meta charset="UTF-8">
@@ -19,14 +21,14 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/barfiller.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
 </head>
 
 <body>
@@ -64,14 +66,7 @@
                     </ul>
                 </li>-->
                 <?php
-                   include_once('../Persistencia/ConexaoBD.php');
-                   include_once('../Modelo/Pessoa.php');
-                   include_once('../Controle/PessoaDAO.php');
-                   $conexao = new ConexaoBD();
-                   $conexao = $conexao->abreConexao();
-                   $pessoaDAO = new PessoaDAO();
-                   $pessoaDAO->implementaMenu($_SESSION['login'], $_SESSION['cargo']);
-
+					$pessoaDAO->implementaMenu();
                ?>
             </ul>
         </nav>
@@ -80,7 +75,7 @@
             <?php
                 if(isset($_SESSION['login']))
                 {
-                    echo '<a href="logout.php">Log Out</a>';
+                    echo '<a href="../Controle/logout.php">Log Out</a>';
                 }
             ?>
             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -98,7 +93,7 @@
                 <div class="col-lg-3">
                     <div class="logo">
                         <a href="./index.php">
-                            <img src="img/logo.png" alt="">
+                            <img src="../img/logo.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -163,7 +158,7 @@
                             <?php
                                 if(isset($_SESSION['login']))
                                 {
-                                    echo '<a href="logout.php">Log Out</a>';
+                                    echo '<a href="../Controle/logout.php">Log Out</a>';
                                 }
                             ?>
                             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -182,7 +177,7 @@
     <!-- Header End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb-bg.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="../img/breadcrumb-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -253,7 +248,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 p-0">
-                    <div class="about-video set-bg" data-setbg="img/about-us.jpg">
+                    <div class="about-video set-bg" data-setbg="../img/about-us.jpg">
                         <!--<a href="https://www.youtube.com/watch?v=EzKkl64rRbM" class="play-btn video-popup"><i
                                 class="fa fa-caret-right"></i></a>-->
                     </div>
@@ -322,7 +317,7 @@
             <div class="row">
                 <div class="ts-slider owl-carousel">
                     <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-1.jpg">
+                        <div class="ts-item set-bg" data-setbg="../img/team/team-1.jpg">
                             <div class="ts_text">
                                 <h4>Athart Rachel</h4>
                                 <span>Gym Trainer</span>
@@ -330,7 +325,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-2.jpg">
+                        <div class="ts-item set-bg" data-setbg="../img/team/team-2.jpg">
                             <div class="ts_text">
                                 <h4>Athart Rachel</h4>
                                 <span>Gym Trainer</span>
@@ -338,7 +333,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-3.jpg">
+                        <div class="ts-item set-bg" data-setbg="../img/team/team-3.jpg">
                             <div class="ts_text">
                                 <h4>Athart Rachel</h4>
                                 <span>Gym Trainer</span>
@@ -346,7 +341,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-4.jpg">
+                        <div class="ts-item set-bg" data-setbg="../img/team/team-4.jpg">
                             <div class="ts_text">
                                 <h4>Athart Rachel</h4>
                                 <span>Gym Trainer</span>
@@ -354,7 +349,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-5.jpg">
+                        <div class="ts-item set-bg" data-setbg="../img/team/team-5.jpg">
                             <div class="ts_text">
                                 <h4>Athart Rachel</h4>
                                 <span>Gym Trainer</span>
@@ -362,7 +357,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="img/team/team-6.jpg">
+                        <div class="ts-item set-bg" data-setbg="../img/team/team-6.jpg">
                             <div class="ts_text">
                                 <h4>Athart Rachel</h4>
                                 <span>Gym Trainer</span>
@@ -376,7 +371,7 @@
     <!-- Team Section End -->
 
     <!-- Banner Section Begin -->
-    <!--<section class="banner-section set-bg" data-setbg="img/banner-bg.jpg">
+    <!--<section class="banner-section set-bg" data-setbg="../img/banner-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -407,7 +402,7 @@
                     <div class="row">
                         <div class="col-lg-12 text-center">
                             <div class="ti_pic">
-                                <img src="img/testimonial/testimonial-1.jpg" alt="">
+                                <img src="../img/testimonial/testimonial-1.jpg" alt="">
                             </div>
                             <div class="ti_text">
                                 <p>Não me arrependo de ter me tornado cliente, uma das academias com a melhor estrutura e atendimento que já vi.<br /></p>
@@ -427,7 +422,7 @@
                     <div class="row">
                         <div class="col-lg-12 text-center">
                             <div class="ti_pic">
-                                <img src="img/testimonial/testimonial-2.jpg" alt="">
+                                <img src="../img/testimonial/testimonial-2.jpg" alt="">
                             </div>
                             <div class="ti_text">
                                 <p>Se você busca um local sério para treinar e mudar seu estilo de vida, esse é o lugar! Sem dúvidas!<br /></p>
@@ -485,7 +480,7 @@
                 <div class="col-lg-4">
                     <div class="fs-about">
                         <div class="fa-logo">
-                            <a href="#"><img src="img/logo.png" alt=""></a>
+                            <a href="#"><img src="../img/logo.png" alt=""></a>
                         </div>
                         <p>Com você para uma vida mais saudável, feliz e de bem consigo mesmo.
                             Venha nos fazer um visita.</p>
@@ -573,14 +568,14 @@
     <!-- Search model end -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/masonry.pkgd.min.js"></script>
-    <script src="js/jquery.barfiller.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/masonry.pkgd.min.js"></script>
+    <script src="../js/jquery.barfiller.js"></script>
+    <script src="../js/jquery.slicknav.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/main.js"></script>
 
 
 </body>

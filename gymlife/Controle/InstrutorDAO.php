@@ -1,7 +1,7 @@
 <?php
 	// Persistence
-	include_once('Modelo/Instrutor.php');
-	include_once('Modelo/Pessoa.php');
+	include_once('../Modelo/Instrutor.php');
+	include_once('../Modelo/Pessoa.php');
 	class InstrutorDAO{
 
 		public function __construct(){}

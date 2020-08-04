@@ -5,16 +5,23 @@
 
     <?php
         session_start();
-
+        
         include_once('../Persistencia/ConexaoBD.php');
 		include_once('../Modelo/Pessoa.php');
 		include_once('../Controle/PessoaDAO.php');
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
-		$pessoaDAO = new PessoaDAO();
-		$pessoaDAO->implementaRestricaoDeslogar($_SESSION['login']);
-
-
+        $pessoaDAO = new PessoaDAO();
+        if (isset($_SESSION['login'])) {
+            $pessoaDAO->implementaRestricaoDeslogar($_SESSION['login']);
+        }/*
+        else {
+            echo "<script type='text/javascript'>".
+                    "alert('".
+                        "Erro:".
+                    "');".
+                 "</script>";
+        }*/
 		//$nomePessoa = 'Samuel';
     ?>
 
@@ -353,9 +360,6 @@
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
-
-
-
 </body>
 
 </html>

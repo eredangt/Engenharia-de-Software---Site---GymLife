@@ -19,14 +19,14 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/barfiller.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
 </head>
 
 <body>
@@ -64,13 +64,9 @@
                     </ul>
                 </li>-->
                 <?php
-                   include_once('Persistencia/ConexaoBD.php');
-                   include_once('Modelo/Pessoa.php');
-                   include_once('Controle/PessoaDAO.php');
-                   $conexao = new ConexaoBD();
-                   $conexao = $conexao->abreConexao();
+                   include_once('../Controle/PessoaDAO.php');
                    $pessoaDAO = new PessoaDAO();
-                   $pessoaDAO->implementaMenu($_SESSION['login'], $_SESSION['cargo']);
+                   $pessoaDAO->implementaMenu();
 
                ?>
             </ul>
@@ -81,7 +77,7 @@
             <?php
                 if(isset($_SESSION['login']))
                 {
-                    echo '<a href="logout.php">Log Out</a>';
+                    echo '<a href="../Controle/logout.php">Log Out</a>';
                 }
             ?>
             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -99,7 +95,7 @@
                 <div class="col-lg-3">
                     <div class="logo">
                         <a href="./index.php">
-                            <img src="img/logo.png" alt="">
+                            <img src="../img/logo.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -128,7 +124,7 @@
                                 {
                                     echo '<li><a href="./menu.php">Menu</a></li>';
 
-                                    if($_SESSION['cargo'] == 'instrutor'){
+                                    if(isset($_SESSION['cargo']) && $_SESSION['cargo'] == 'instrutor'){
 										echo '<li><a href="cadastrar.php">Cadastrar</a>
 											<ul class="dropdown">
 												<li><a href="cadastrarpessoa.php">Pessoa</a></li>
@@ -164,7 +160,7 @@
                             <?php
                                 if(isset($_SESSION['login']))
                                 {
-                                    echo '<a href="logout.php">Log Out</a>';
+                                    echo '<a href="../Controle/logout.php">Log Out</a>';
                                 }
                             ?>
                             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -183,7 +179,7 @@
     <!-- Header End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb-bg.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="../img/breadcrumb-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -209,7 +205,7 @@
                 <div class="col-lg-8">
                     <div class="class-details-text">
                         <div class="cd-pic">
-                            <img src="img/classes/class-details/class-detailsl.jpg" alt="">
+                            <img src="../img/classes/class-details/class-detailsl.jpg" alt="">
                         </div>
                         <div class="cd-text">
                             <div class="cd-single-item">
@@ -257,7 +253,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="cd-trainer-pic">
-                                        <img src="img/classes/class-details/trainer-profile.jpg" alt="">
+                                        <img src="../img/classes/class-details/trainer-profile.jpg" alt="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -307,7 +303,7 @@
                         </div>
                         <!--<div class="so-latest">
                             <h5 class="title">Latest posts</h5>
-                            <div class="latest-large set-bg" data-setbg="img/letest-blog/latest-1.jpg">
+                            <div class="latest-large set-bg" data-setbg="../img/letest-blog/latest-1.jpg">
                                 <div class="ll-text">
                                     <h5><a href="#">This Japanese Way of Making Iced Coffee Is a Game...</a></h5>
                                     <ul>
@@ -318,7 +314,7 @@
                             </div>
                             <div class="latest-item">
                                 <div class="li-pic">
-                                    <img src="img/letest-blog/latest-2.jpg" alt="">
+                                    <img src="../img/letest-blog/latest-2.jpg" alt="">
                                 </div>
                                 <div class="li-text">
                                     <h6><a href="#">Grilled Potato and Green Bean Salad</a></h6>
@@ -327,7 +323,7 @@
                             </div>
                             <div class="latest-item">
                                 <div class="li-pic">
-                                    <img src="img/letest-blog/latest-3.jpg" alt="">
+                                    <img src="../img/letest-blog/latest-3.jpg" alt="">
                                 </div>
                                 <div class="li-text">
                                     <h6><a href="#">The $8 French Rosé I Buy in Bulk Every Summer</a></h6>
@@ -336,7 +332,7 @@
                             </div>
                             <div class="latest-item">
                                 <div class="li-pic">
-                                    <img src="img/letest-blog/latest-4.jpg" alt="">
+                                    <img src="../img/letest-blog/latest-4.jpg" alt="">
                                 </div>
                                 <div class="li-text">
                                     <h6><a href="#">Ina Garten's Skillet-Roasted Lemon Chicken</a></h6>
@@ -345,7 +341,7 @@
                             </div>
                             <div class="latest-item">
                                 <div class="li-pic">
-                                    <img src="img/letest-blog/latest-5.jpg" alt="">
+                                    <img src="../img/letest-blog/latest-5.jpg" alt="">
                                 </div>
                                 <div class="li-text">
                                     <h6><a href="#">The Best Weeknight Baked Potatoes, 3 Creative Ways</a></h6>
@@ -353,7 +349,7 @@
                                 </div>
                             </div>
                         </div>-->
-                        <div class="so-banner set-bg" data-setbg="img/sidebar-banner.jpg">
+                        <div class="so-banner set-bg" data-setbg="../img/sidebar-banner.jpg">
                             <!--<h5>Banner 300x300</h5>-->
                         </div>
                     </div>
@@ -545,7 +541,7 @@
                 <div class="col-lg-4">
                     <div class="fs-about">
                         <div class="fa-logo">
-                            <a href="#"><img src="img/logo.png" alt=""></a>
+                            <a href="#"><img src="../img/logo.png" alt=""></a>
                         </div>
                         <p>Com você para uma vida mais saudável, feliz e de bem consigo mesmo.
                             Venha nos fazer um visita.</p>
@@ -633,17 +629,14 @@
     <!-- Search model end -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/masonry.pkgd.min.js"></script>
-    <script src="js/jquery.barfiller.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-
-
-
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/masonry.pkgd.min.js"></script>
+    <script src="../js/jquery.barfiller.js"></script>
+    <script src="../js/jquery.slicknav.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

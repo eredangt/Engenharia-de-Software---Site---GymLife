@@ -5,8 +5,8 @@
 
 	<?php
 		session_start();
-		//$_SESSION['login'] = 'arroz';
-		//$_SESSION['cargo'] = 'instrutor';
+        include_once('../Controle/PessoaDAO.php');
+        $pessoaDAO = new PessoaDAO();
     ?>
 
     <meta charset="UTF-8">
@@ -66,17 +66,13 @@
                     </ul>
                 </li>-->
                 <?php
-					$teste = include_once('../Persistencia/ConexaoBD.php');
-					var_dump($teste);
-					$teste = include_once('../Modelo/Pessoa.php');
-					var_dump($teste);
-					$teste = include_once('../Controle/PessoaDAO.php');
-					var_dump($teste);
-					$conexao = new ConexaoBD();
-					$conexao = $conexao->abreConexao();
-					$pessoaDAO = new PessoaDAO();
-					$pessoaDAO->implementaMenu($_SESSION['login'], $_SESSION['cargo']);
-					/*if(isset($_SESSION['login']))
+                    /*
+					include_once('../Controle/PessoaDAO.php');
+                    $pessoaDAO = new PessoaDAO();
+                    */
+					$pessoaDAO->implementaMenu();
+                    /*
+                    if(isset($_SESSION['login']))
 					{
 						echo '<li><a href="./menu.php">Menu</a></li>';
 
@@ -102,8 +98,8 @@
 					}
 					else{
 						echo '<li><a href="./entrar.php">Login</a></li>';
-					}
-*/
+                    }
+                    */
 				?>
             </ul>
         </nav>
@@ -113,7 +109,14 @@
                 if(isset($_SESSION['login']))
                 {
                     echo '<a href="../Controle/logout.php">Log Out</a>';
-                }
+                }/*
+                else {
+                    echo "<script type='text/javascript'>".
+                            "alert('".
+                                "Erro:".
+                            "');".
+                         "</script>";
+                }*/
             ?>
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -155,7 +158,17 @@
                                 </ul>
                             </li>-->
                             <?php
-                                if(isset($_SESSION['login'])){
+			                    if (!isset($_SESSION['login']) || !isset($_SESSION['cargo'])) {
+                                    /*
+                                    echo "<script type='text/javascript'>".
+                                            "alert('".
+                                                "Erro:".
+                                            "');".
+                                            "</script>";
+                                    */
+                                    echo '<li><a href="./entrar.php">Login</a></li>';
+                                }
+                                else {
                                     echo '<li><a href="./menu.php">Menu</a></li>';
 
                                     if($_SESSION['cargo'] == 'instrutor'){
@@ -176,12 +189,7 @@
 											</ul>
 										</li>';
 									}
-
-                                }else{
-                                    echo '<li><a href="./entrar.php">Login</a></li>';
                                 }
-
-
 							?>
 
                         </ul>
@@ -197,7 +205,14 @@
                                 if(isset($_SESSION['login']))
                                 {
                                     echo '<a href="../Controle/logout.php">Log Out</a>';
-                                }
+                                }/*
+                                else {
+                                    echo "<script type='text/javascript'>".
+                                            "alert('".
+                                                "Erro:".
+                                            "');".
+                                         "</script>";
+                                }*/
                             ?>
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -225,15 +240,11 @@
                                 <span>Molde seu corpo</span>
                                 <h1>Seja <strong>forte</strong> treinando muito</h1>
                                 <?php
-									include_once('../Persistencia/ConexaoBD.php');
-									include_once('../Modelo/Pessoa.php');
+                                    /*
 									include_once('../Controle/PessoaDAO.php');
-									$conexao = new ConexaoBD();
-									$conexao = $conexao->abreConexao();
-									$pessoaDAO = new PessoaDAO();
-									$pessoaDAO->implementaBotao($_SESSION['login']);
-
-
+                                    $pessoaDAO = new PessoaDAO();
+                                    */
+									$pessoaDAO->implementaBotao();
                                 ?>
                             </div>
                         </div>
@@ -248,13 +259,11 @@
                                 <span>Molde seu corpo</span>
                                 <h1>Seja <strong>forte</strong> treinando muito</h1>
                                 <?php
-									include_once('../Persistencia/ConexaoBD.php');
-									include_once('../Modelo/Pessoa.php');
+                                    /*
 									include_once('../Controle/PessoaDAO.php');
-									$conexao = new ConexaoBD();
-									$conexao = $conexao->abreConexao();
-									$pessoaDAO = new PessoaDAO();
-									$pessoaDAO->implementaBotao($_SESSION['login']);
+                                    $pessoaDAO = new PessoaDAO();
+                                    */
+									$pessoaDAO->implementaBotao();
 									/*
 					                if(isset($_SESSION['login']))
 					                {
@@ -262,7 +271,8 @@
                                     }
                                     else{
                                         echo '<a href="./entrar.php" class="primary-btn">Login</a>';
-                                    }*/
+                                    }
+                                    */
                                 ?>
                             </div>
                         </div>
@@ -564,22 +574,18 @@
                             <li><a href="./about-us.php">Sobre nós</a></li>
                             <li><a href="./aulas.php">Aulas</a></li>
                             <li><a href="./modalidades.php">Modalidades</a></li>
-							<?php
-								echo 'ca estou '.session_status();
-								include_once('../Persistencia/ConexaoBD.php');
-								include_once('../Modelo/Pessoa.php');
+                            <?php
+                                /*
 								include_once('../Controle/PessoaDAO.php');
-								$conexao = new ConexaoBD();
-								$conexao = $conexao->abreConexao();
-								$pessoaDAO = new PessoaDAO();
-								var_dump($pessoaDAO);
-								//$_SESSION['login'] = 'oi';
-								$pessoaDAO->implementaRodape($_SESSION['login']);
-
-				                /*if(isset($_SESSION['login']))
+                                $pessoaDAO = new PessoaDAO();
+                                */
+                                $pessoaDAO->implementaRodape();
+                                /*
+                                if(isset($_SESSION['login']))
 				                {
-				                    echo '<a href="logout.php">Log Out</a>';
-				                }*/
+				                    echo '<a href="../Controle/logout.php">Log Out</a>';
+                                }
+                                */
 				            ?>
                         </ul>
                     </div>

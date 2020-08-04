@@ -4,6 +4,8 @@
 
     <?php
 		session_start();
+        include_once('../Controle/PessoaDAO.php');
+        $pessoaDAO = new PessoaDAO();
     ?>
 
     <meta charset="UTF-8">
@@ -63,30 +65,17 @@
                     </ul>
                 </li>-->
 				<?php
-					include_once('Persistencia/ConexaoBD.php');
-					include_once('Modelo/Pessoa.php');
-					include_once('Controle/PessoaDAO.php');
-					$conexao = new ConexaoBD();
-					$conexao = $conexao->abreConexao();
-					$pessoaDAO = new PessoaDAO();
-					$pessoaDAO->implementaMenu($_SESSION['login'], $_SESSION['cargo']);
-
+					$pessoaDAO->implementaMenu();
 				?>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="canvas-social">
             <?php
-				include_once('../Persistencia/ConexaoBD.php');
-				include_once('../Modelo/Pessoa.php');
-				include_once('../Controle/PessoaDAO.php');
-				$conexao = new ConexaoBD();
-				$conexao = $conexao->abreConexao();
-				$pessoaDAO = new PessoaDAO();
-				$pessoaDAO->implementaLogOut($_SESSION['login']);
+				$pessoaDAO->implementaLogOut();
                 /*if(isset($_SESSION['login']))
                 {
-                    echo '<a href="logout.php">Log Out</a>';
+                    echo '<a href="../Controle/logout.php">Log Out</a>';
                 }*/
             ?>
             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -104,7 +93,7 @@
                 <div class="col-lg-3">
                     <div class="logo">
                         <a href="./index.php">
-                            <img src="img/logo.png" alt="">
+                            <img src="../img/logo.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -129,13 +118,7 @@
                                 </ul>
                             </li>-->
 							<?php
-								include_once('Persistencia/ConexaoBD.php');
-								include_once('Modelo/Pessoa.php');
-								include_once('Controle/PessoaDAO.php');
-								$conexao = new ConexaoBD();
-								$conexao = $conexao->abreConexao();
-								$pessoaDAO = new PessoaDAO();
-								$pessoaDAO->implementaMenu($_SESSION['login'], $_SESSION['cargo']);
+								$pessoaDAO->implementaMenu();
 
 							?>
                         </ul>
@@ -148,17 +131,11 @@
                         </div>-->
                         <div class="to-social">
                             <?php
-								include_once('Persistencia/ConexaoBD.php');
-								include_once('Modelo/Pessoa.php');
-								include_once('Controle/PessoaDAO.php');
-								$conexao = new ConexaoBD();
-								$conexao = $conexao->abreConexao();
-								$pessoaDAO = new PessoaDAO();
-								$pessoaDAO->implementaLogOut($_SESSION['login']);
+								$pessoaDAO->implementaLogOut();
                             /*
                                 if(isset($_SESSION['login']))
                                 {
-                                    echo '<a href="logout.php">Log Out</a>';
+                                    echo '<a href="../Controle/logout.php">Log Out</a>';
                                 }*/
                             ?>
                             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -177,7 +154,7 @@
     <!-- Header End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb-bg.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="../img/breadcrumb-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -210,7 +187,7 @@
             </div>
             <div class="row">
                 <!--<div class="col-lg-4 col-sm-6">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-1.jpg">
+                    <div class="ts-item set-bg" data-setbg="../img/team/team-1.jpg">
                         <div class="ts_text">
                             <h4>Athart Rachel</h4>
                             <span>Treinador</span>
@@ -221,20 +198,16 @@
                 <?php
 					//faz a conexao com o banco de dados
 
-					include_once('Persistencia/ConexaoBD.php');
-					include_once('Modelo/Pessoa.php');
-					include_once('Controle/PessoaDAO.php');
+					include_once('../Persistencia/ConexaoBD.php');
+					include_once('../Modelo/Pessoa.php');
 					$conexao = new ConexaoBD();
 					$conexao = $conexao->abreConexao();
-					$pessoaDAO = new PessoaDAO();
 					$pessoaDAO->minhaEquipe($conexao);
-
-
                 ?>
 
                 <!--
                 <div class="col-lg-4 col-sm-6">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-2.jpg">
+                    <div class="ts-item set-bg" data-setbg="../img/team/team-2.jpg">
                         <div class="ts_text">
                             <h4>Athart Rachel</h4>
                             <span>Treinador</span>
@@ -242,7 +215,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-3.jpg">
+                    <div class="ts-item set-bg" data-setbg="../img/team/team-3.jpg">
                         <div class="ts_text">
                             <h4>Athart Rachel</h4>
                             <span>Treinador</span>
@@ -251,7 +224,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-4.jpg">
+                    <div class="ts-item set-bg" data-setbg="../img/team/team-4.jpg">
                         <div class="ts_text">
                             <h4>Athart Rachel</h4>
                             <span>Treinador</span>
@@ -259,7 +232,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-5.jpg">
+                    <div class="ts-item set-bg" data-setbg="../img/team/team-5.jpg">
                         <div class="ts_text">
                             <h4>Athart Rachel</h4>
                             <span>Treinador</span>
@@ -267,7 +240,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-6.jpg">
+                    <div class="ts-item set-bg" data-setbg="../img/team/team-6.jpg">
                         <div class="ts_text">
                             <h4>Athart Rachel</h4>
                             <span>Treinador</span>
@@ -316,7 +289,7 @@
                 <div class="col-lg-4">
                     <div class="fs-about">
                         <div class="fa-logo">
-                            <a href="#"><img src="img/logo.png" alt=""></a>
+                            <a href="#"><img src="../img/logo.png" alt=""></a>
                         </div>
                         <p>Com você para uma vida mais saudável, feliz e de bem consigo mesmo.
                             Venha nos fazer um visita.</p>
@@ -337,13 +310,7 @@
                             <li><a href="./aulas.php">Aulas</a></li>
                             <li><a href="./modalidades.php">Modalidades</a></li>
                             <?php
-								include_once('../Persistencia/ConexaoBD.php');
-								include_once('../Modelo/Pessoa.php');
-								include_once('../Controle/PessoaDAO.php');
-								$conexao = new ConexaoBD();
-								$conexao = $conexao->abreConexao();
-								$pessoaDAO = new PessoaDAO();
-								$pessoaDAO->implementaRodape($_SESSION['login']);
+								$pessoaDAO->implementaRodape();
                                 /*if(isset($_SESSION['login']))
                                 {
                                     echo '<li><a href="./menu.php">Menu</a></li>';
@@ -419,8 +386,6 @@
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
-
-
 </body>
 
 </html>

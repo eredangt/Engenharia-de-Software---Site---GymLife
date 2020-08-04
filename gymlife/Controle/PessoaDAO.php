@@ -1,4 +1,5 @@
 <?php
+	include_once('../Persistencia/ConexaoBD.php');
 	// Persistence
 	class PessoaDAO{
 
@@ -8,15 +9,15 @@
 			echo $pessoa->getNome();
 		}
 
-		public function implementaRestricao($login , $cargo){
+		public function implementaRestricao(){
 
-			if(!isset($login)){
+			if(!isset($_SESSION['login'])){
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 	                            alert("Logue para acessar esta página!");
 	                            window.location.replace("../Visualizacao/entrar.php");
 	                 </SCRIPT>';
 			}
-			if(($cargo == 'aluno')){
+			if(($_SESSION['cargo'] == 'aluno')){
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 	                            alert("Você não tem permissão para entrar aqui.");
 	                            window.location.replace("../Visualizacao/menu.php");
@@ -24,8 +25,8 @@
 			}
 		}
 
-		public function implementaRestricaoLogar($login){
-			if(!isset($login)){
+		public function implementaRestricaoLogar(){
+			if(!isset($_SESSION['login'])){
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 	                            alert("Logue para acessar esta página!");
 	                            window.location.replace("../Visualizacao/entrar.php");
@@ -44,58 +45,71 @@
 		}
 
 
-		public function implementaLogOut($login){
-			echo 'Foi aqui';
-			echo $login;
-			if(isset($login)){
+		public function implementaLogOut(){
+			if(isset($_SESSION['login'])){
 				echo '<a href="./logout.php">Log Out</a>';
 			}
 		}
 
-		public function implementaRodape($login){
-			var_dump($login);
-			if(isset($login)) {
-				echo '<li><a href="../Visualizacao/menu.php">Menu</a></li>';
-			} else{
+		public function implementaRodape(){
+			if (!isset($_SESSION['login'])) {
+				/*
+				echo "<script type='text/javascript'>alert('".
+							"Erro: implementaMenu".
+					"');</script>";
+				*/
 				echo '<li><a href="../Visualizacao/entrar.php">Login</a></li>';
 			}
-		}
-
-		public function implementaBotao($login){
-			if(isset($login)) {
-				echo '<a href="../Visualizacao/menu.php" class="primary-btn">Acesse o Menu</a>';
-			}else{
-				echo '<a href="../Visualizacao/entrar.php" class="primary-btn">Login</a>';
+			else {
+				echo '<li><a href="../Visualizacao/menu.php">Menu</a></li>';
 			}
 		}
 
-		public function implementaMenu($nome, $cargo){
-			if(isset($nome)){
-						echo '<li><a href="../Visualizacao/menu.php">Menu</a></li>';
+		public function implementaBotao(){
+			if (!isset($_SESSION['login'])) {
+				/*
+				echo "<script type='text/javascript'>alert('".
+							"Erro: implementaMenu".
+					"');</script>";
+				*/
+				echo '<a href="../Visualizacao/entrar.php" class="primary-btn">Login</a>';
+			}
+			else {
+				echo '<a href="../Visualizacao/menu.php" class="primary-btn">Acesse o Menu</a>';
+			}
+		}
 
-						if($cargo == 'instrutor'){
-							echo '<li><a href="../Visualizacao/cadastrar.php">Cadastrar</a>
-										<ul class="dropdown">
-											<li><a href="../Visualizacao/cadastrarpessoa.php">Pessoa</a></li>
-											<li><a href="../Visualizacao/cadastrartreino.php">Treino</a></li>
-											<li><a href="../Visualizacao/cadastrarequipamento.php">Equipamento</a></li>
-											<li><a href="../Visualizacao/cadastrarplano.php">Plano</a></li>
-										</ul>
-									</li>
-									<li><a href="../Visualizacao/listar.php">Listar</a>
-										<ul class="dropdown">
-											<li><a href="../Visualizacao/listarpessoas.php">Pessoas</a></li>
-											<li><a href="../Visualizacao/listartreinos.php">Treinos</a></li>
-											<li><a href="../Visualizacao/listarequipamentos.php">Equipamentos</a></li>
-											<li><a href="../Visualizacao/listarplanos.php">Planos</a></li>
-										</ul>
-									</li>';
-						}
+		public function implementaMenu(){
+			if (!isset($_SESSION['login']) || !isset($_SESSION['cargo'])) {
+				/*
+				echo "<script type='text/javascript'>alert('".
+							"Erro: implementaMenu".
+					"');</script>";
+				*/
+				echo '<li><a href="../Visualizacao/entrar.php">Login</a></li>';
+			}
+			else {
+				echo '<li><a href="../Visualizacao/menu.php">Menu</a></li>';
 
-					}
-					else{
-						echo '<li><a href="../Visualizacao/entrar.php">Login</a></li>';
-					}
+				if($_SESSION['cargo'] == 'instrutor'){
+					echo '<li><a href="../Visualizacao/cadastrar.php">Cadastrar</a>
+								<ul class="dropdown">
+									<li><a href="../Visualizacao/cadastrarpessoa.php">Pessoa</a></li>
+									<li><a href="../Visualizacao/cadastrartreino.php">Treino</a></li>
+									<li><a href="../Visualizacao/cadastrarequipamento.php">Equipamento</a></li>
+									<li><a href="../Visualizacao/cadastrarplano.php">Plano</a></li>
+								</ul>
+							</li>
+							<li><a href="../Visualizacao/listar.php">Listar</a>
+								<ul class="dropdown">
+									<li><a href="../Visualizacao/listarpessoas.php">Pessoas</a></li>
+									<li><a href="../Visualizacao/listartreinos.php">Treinos</a></li>
+									<li><a href="../Visualizacao/listarequipamentos.php">Equipamentos</a></li>
+									<li><a href="../Visualizacao/listarplanos.php">Planos</a></li>
+								</ul>
+							</li>';
+				}
+			}
 		}
 
 		public function minhaEquipe($conexao){
