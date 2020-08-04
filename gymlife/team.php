@@ -64,33 +64,13 @@
                     </ul>
                 </li>-->
 				<?php
-					if(isset($_SESSION['login']))
-					{
-						echo '<li><a href="./menu.php">Menu</a></li>';
-						
-						if($_SESSION['cargo'] == 'instrutor'){
-							echo '<li><a href="cadastrar.php">Cadastrar</a>
-										<ul class="dropdown">
-											<li><a href="cadastrarpessoa.php">Pessoa</a></li>
-											<li><a href="cadastrartreino.php">Treino</a></li>
-											<li><a href="cadastrarequipamento.php">Equipamento</a></li>
-											<li><a href="cadastrarplano.php">Plano</a></li>
-										</ul>
-									</li>
-									<li><a href="listar.php">Listar</a>
-										<ul class="dropdown">
-											<li><a href="listarpessoas.php">Pessoas</a></li>
-											<li><a href="listartreinos.php">Treinos</a></li>
-											<li><a href="listarequipamentos.php">Equipamentos</a></li>
-											<li><a href="listarplanos.php">Planos</a></li>
-										</ul>
-									</li>';
-						}
-						
-					}
-					else{
-						echo '<li><a href="./entrar.php">Login</a></li>';
-					}
+					include_once('Persistencia/ConexaoBD.php');
+					include_once('Modelo/Pessoa.php');
+					include_once('Controle/PessoaDAO.php');
+					$conexao = new ConexaoBD();
+					$conexao = $conexao->abreConexao();
+					$pessoaDAO = new PessoaDAO();
+					$pessoaDAO->implementaMenu($_SESSION['login'], $_SESSION['cargo']);
 					
 				?>
             </ul>
@@ -98,10 +78,17 @@
         <div id="mobile-menu-wrap"></div>
         <div class="canvas-social">
             <?php
-                if(isset($_SESSION['login']))
+				include_once('Persistencia/ConexaoBD.php');
+				include_once('Modelo/Pessoa.php');
+				include_once('Controle/PessoaDAO.php');
+				$conexao = new ConexaoBD();
+				$conexao = $conexao->abreConexao();
+				$pessoaDAO = new PessoaDAO();
+				$pessoaDAO->implementaLogOut($_SESSION['login']);
+                /*if(isset($_SESSION['login']))
                 {
                     echo '<a href="logout.php">Log Out</a>';
-                }
+                }*/
             ?>
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -143,33 +130,14 @@
                                 </ul>
                             </li>-->
 							<?php
-                                if(isset($_SESSION['login']))
-                                {
-                                    echo '<li><a href="./menu.php">Menu</a></li>';
-                                    
-                                    if($_SESSION['cargo'] == 'instrutor'){
-										echo '<li><a href="cadastrar.php">Cadastrar</a>
-											<ul class="dropdown">
-												<li><a href="cadastrarpessoa.php">Pessoa</a></li>
-												<li><a href="cadastrartreino.php">Treino</a></li>
-												<li><a href="cadastrarequipamento.php">Equipamento</a></li>
-												<li><a href="cadastrarplano.php">Plano</a></li>
-											</ul>
-										</li>
-										<li><a href="listar.php">Listar</a>
-											<ul class="dropdown">
-												<li><a href="listarpessoas.php">Pessoas</a></li>
-												<li><a href="listartreinos.php">Treinos</a></li>
-												<li><a href="listarequipamentos.php">Equipamentos</a></li>
-												<li><a href="listarplanos.php">Planos</a></li>
-											</ul>
-										</li>';
-									}
-                                    
-                                }
-                                else{
-                                    echo '<li><a href="./entrar.php">Login</a></li>';
-                                }
+								include_once('Persistencia/ConexaoBD.php');
+								include_once('Modelo/Pessoa.php');
+								include_once('Controle/PessoaDAO.php');
+								$conexao = new ConexaoBD();
+								$conexao = $conexao->abreConexao();
+								$pessoaDAO = new PessoaDAO();
+								$pessoaDAO->implementaMenu($_SESSION['login'], $_SESSION['cargo']);
+                     
 							?>
                         </ul>
                     </nav>
@@ -181,10 +149,18 @@
                         </div>-->
                         <div class="to-social">
                             <?php
+								include_once('Persistencia/ConexaoBD.php');
+								include_once('Modelo/Pessoa.php');
+								include_once('Controle/PessoaDAO.php');
+								$conexao = new ConexaoBD();
+								$conexao = $conexao->abreConexao();
+								$pessoaDAO = new PessoaDAO();
+								$pessoaDAO->implementaLogOut($_SESSION['login']);
+                            /*
                                 if(isset($_SESSION['login']))
                                 {
                                     echo '<a href="logout.php">Log Out</a>';
-                                }
+                                }*/
                             ?>
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -245,21 +221,15 @@
                 
                 <?php
 					//faz a conexao com o banco de dados
-					require('phpConexaoBD.php');
+		
+					include_once('Persistencia/ConexaoBD.php');
+					include_once('Modelo/Pessoa.php');
+					include_once('Controle/PessoaDAO.php');
+					$conexao = new ConexaoBD();
+					$conexao = $conexao->abreConexao();
+					$pessoaDAO = new PessoaDAO();
+					$pessoaDAO->minhaEquipe($conexao);
 					
-					$sql = "SELECT P.nome, I.imagem FROM Pessoa as P, Instrutor as I ORDER BY P.nome";
-					$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
-
-					while ($linha = mysqli_fetch_row($tabela)) {
-						echo '<div class="col-lg-4 col-sm-6">
-                    <div class="ts-item set-bg" data-setbg="' . $linha[1] .'">
-                    <div class="ts_text">
-                            <h4>'.$linha[0].'</h4>
-                            <span>Treinador</span>
-                        </div>
-                    </div>
-                </div>';
-					}
 					
                 ?>
                 
@@ -368,13 +338,20 @@
                             <li><a href="./aulas.php">Aulas</a></li>
                             <li><a href="./modalidades.php">Modalidades</a></li>
                             <?php
-                                if(isset($_SESSION['login']))
+								include_once('Persistencia/ConexaoBD.php');
+								include_once('Modelo/Pessoa.php');
+								include_once('Controle/PessoaDAO.php');
+								$conexao = new ConexaoBD();
+								$conexao = $conexao->abreConexao();
+								$pessoaDAO = new PessoaDAO();
+								$pessoaDAO->implementaRodape($_SESSION['login']);
+                                /*if(isset($_SESSION['login']))
                                 {
                                     echo '<li><a href="./menu.php">Menu</a></li>';
                                 }
                                 else{
                                     echo '<li><a href="./entrar.php">Login</a></li>';
-                                }
+                                }*/
                             ?>
                         </ul>
                     </div>
