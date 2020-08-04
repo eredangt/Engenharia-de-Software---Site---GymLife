@@ -1,7 +1,7 @@
 <?php
 	// Persistence
-	include_once('Modelo/Instrutor.php');
-	include_once('Modelo/Pessoa.php');
+	include_once('../Modelo/Instrutor.php');
+	include_once('../Modelo/Pessoa.php');
 	class InstrutorDAO{
 
 		public function __construct(){}
@@ -15,7 +15,7 @@
             }
             $sql = "INSERT INTO Instrutor(Pessoa_idPessoa, salario, Carga_horaria, imagem)
                     VALUES('".$COD_Instrutor."','".$instrutor->getSalario()."','".$instrutor->getCH()."','".$instrutor->getImagem()."');";
-            
+
             echo $sql;
             $resultadoI = mysqli_query($con,$sql) or die(mysqli_error($con));
             if($resultadoI == true){
@@ -28,9 +28,9 @@
                 echo 'Algo ocorreu: ' . mysqli_error($con);
             }
         }
-        
+
         public function atualizarInstrutor($salario, $cH, $imagem, $codigo, $con){
-			
+
 			$sql = "UPDATE Instrutor SET	salario = '".$salario."',
 											Carga_horaria = '".$cH."',
 											imagem = '".$imagem."'
@@ -43,13 +43,13 @@
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 							alert("Instrutor alterado com sucesso!");
 							window.location.replace("menu.php");
-					</SCRIPT>';  
+					</SCRIPT>';
 			}else{
 				echo '<script>alert("Problema ao alterar INSTRUTOR no banco de dados");</script>';
 				echo 'O erro que aconteceu foi este: ' . mysqli_error($con).'<br>';
 				echo '<a href="menu.php"> VOLTAR </a>';
 			}
 		}
-        
+
 	}
 ?>

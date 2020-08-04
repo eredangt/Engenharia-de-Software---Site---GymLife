@@ -6,7 +6,7 @@
 		private $senha = "";
 		private $banco = "academia";
 		private $conexao = null;
-		
+
 		public function __construct(){}
 
 		public function abreConexao(){
@@ -18,7 +18,7 @@
 			}
 			return $this->conexao;
 		}
-		
+
 		public function executaSQL($sql)
 		{
 			$this->abreConexao();
@@ -26,8 +26,4 @@
 			return $resultado;
 		}
 	}
-	// Nos arquivos que precisam de conectar com o BD
-	#$conexao = new ConexaoBD();
-	#$conexao = $conexao->abreConexao();
-
 ?>

@@ -1,11 +1,11 @@
 <?php
-	include_once('Persistencia/ConexaoBD.php');
-	include_once('Modelo/Pessoa.php');
-	include_once('Controle/PessoaDAO.php');
-	include_once('Modelo/Cliente.php');
-	include_once('Controle/ClienteDAO.php');
-	include_once('Modelo/Instrutor.php');
-	include_once('Controle/InstrutorDAO.php');
+	include_once('../Persistencia/ConexaoBD.php');
+	include_once('../Modelo/Pessoa.php');
+	include_once('../Controle/PessoaDAO.php');
+	include_once('../Modelo/Cliente.php');
+	include_once('../Controle/ClienteDAO.php');
+	include_once('../Modelo/Instrutor.php');
+	include_once('../Controle/InstrutorDAO.php');
 
 	//require('phpConexaoBD.php');
 	session_start();
@@ -13,7 +13,7 @@
 	$codigo = $_POST['hddCodigo'];
 	if($_SESSION['cargo'] == 'instrutor'){
 
-		
+
 
 	// Variaveis de consulta
 		$resultadoC = '';
@@ -45,7 +45,7 @@
 		$imagemI = $_FILES['image']; // Imagem Instrutor
 */
 		if($cargo == 'C'){
-				
+
 			$cpfC = $_POST['txtCPFPessoaC']; // CPF
 			$nomeC = $_POST['txtNomeC']; // Nome
 			$telefoneC = $_POST['txtTelC']; // Telefone
@@ -53,20 +53,20 @@
 			$dataNascC = $_POST['txtDataC']; // Data de Nascimento
 			$senhaC = $_POST['senhaPessoaC']; // Senha
 			$planoC = $_POST['selecaoPlanoC']; // Plano adquirido
-			
+
 			// Nos arquivos que precisam de conectar com o BD
 			$conexao = new ConexaoBD();
 			$conexao = $conexao->abreConexao();
 
 			$pessoaDAO = new PessoaDAO();
 			$pessoaDAO->atualizarPessoa($cpfC, $nomeC, $telefoneC, $emailC, $dataNascC, $senhaC, $cargo, $codigo, $conexao);
-			
+
 			$c1 = new ClienteDAO();
 			$c1->atualizarCliente($planoC, $codigo, $conexao);
 
 		}
 		if($cargo == 'I'){
-			
+
 			$cpfI = $_POST['txtCPFPessoaI']; // CPF
 			$nomeI = $_POST['txtNomeI']; // Nome
 			$telefoneI = $_POST['txtTelI']; // Telefone
@@ -76,7 +76,7 @@
 			$salarioI = $_POST['txtSalarioI']; // Salario
 			$cargaHI = $_POST['txtHorariaI']; // Carga Horaria
 			$imagemI = $_FILES['image']; // Imagem Instrutor
-			
+
 			// Nos arquivos que precisam de conectar com o BD
 			$conexao = new ConexaoBD();
 			$conexao = $conexao->abreConexao();
@@ -84,19 +84,19 @@
 
 			$pessoaDAO = new PessoaDAO();
 			$pessoaDAO->atualizarPessoa($cpfI, $nomeI, $telefoneI, $emailI, $dataNascI, $senhaI, $cargo,  $codigo, $conexao); // INSTRUTOR
-			
+
 			$auxImagem = '';
 			if($imagemI['size'] == 0){ //se a imagem não foi alterada
 				$sql = "SELECT * FROM Instrutor WHERE Pessoa_idPessoa='".$codigo."';";
-				
+
 				$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
 				while ($linha = mysqli_fetch_row($tabela)) {
 					$auxImagem = $linha[3];
 				}
-				
+
 			}else{
-				
+
 
 				$uploaddir = 'imgInstrutores/';
 				$uploadfile = $uploaddir . basename($imagemI['name']);
@@ -107,19 +107,19 @@
 					echo 'Aqui está mais informações de debug:';
 					print_r($_FILES);
 				}
-				
+
 				$auxImagem = $uploadfile;
 			}
 			$i1 = new InstrutorDAO();
 			$i1->atualizarInstrutor($salarioI, $cargaHI, $auxImagem, $codigo, $conexao);
-			
+
 		}
 
 
 	}else{
 		echo '<SCRIPT type="text/javascript"> //not showing me this
 						alert("Você não tem permissão para entrar aqui.");
-						window.location.replace("menu.php");
+						window.location.replace("../Visualizacao/menu.php");
 			  </SCRIPT>';
 	}
 ?>
