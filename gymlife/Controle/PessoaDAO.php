@@ -8,6 +8,68 @@
 			echo $pessoa->getNome();
 		}
 		
+		public function implementaLogOut($login){
+			if(isset($login)){
+				echo '<a href="logout.php">Log Out</a>';
+			}
+		}
+		
+		public function implementaRodape($login){
+			if(isset($login)) {
+				echo '<li><a href="./menu.php">Menu</a></li>';
+			} else{
+				echo '<li><a href="./entrar.php">Login</a></li>';
+			}
+		}
+		
+		public function implementaMenu($nome, $cargo){
+			if(isset($nome))
+					{
+						echo '<li><a href="./menu.php">Menu</a></li>';
+						
+						if($cargo == 'instrutor'){
+							echo '<li><a href="cadastrar.php">Cadastrar</a>
+										<ul class="dropdown">
+											<li><a href="cadastrarpessoa.php">Pessoa</a></li>
+											<li><a href="cadastrartreino.php">Treino</a></li>
+											<li><a href="cadastrarequipamento.php">Equipamento</a></li>
+											<li><a href="cadastrarplano.php">Plano</a></li>
+										</ul>
+									</li>
+									<li><a href="listar.php">Listar</a>
+										<ul class="dropdown">
+											<li><a href="listarpessoas.php">Pessoas</a></li>
+											<li><a href="listartreinos.php">Treinos</a></li>
+											<li><a href="listarequipamentos.php">Equipamentos</a></li>
+											<li><a href="listarplanos.php">Planos</a></li>
+										</ul>
+									</li>';
+						}
+						
+					}
+					else{
+						echo '<li><a href="./entrar.php">Login</a></li>';
+					}
+		}
+		
+		public function minhaEquipe($conexao){
+			$sql = "SELECT P.nome, I.imagem FROM Pessoa as P, Instrutor as I 
+							WHERE P.idPessoa = I.Pessoa_idPessoa ORDER BY P.nome ASC";
+							
+					$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+					while ($linha = mysqli_fetch_row($tabela)) {
+						echo '<div class="col-lg-4 col-sm-6">
+									<div class="ts-item set-bg" data-setbg="' . $linha[1] .'">
+									<div class="ts_text">
+											<h4>'.$linha[0].'</h4>
+											<span>Treinador</span>
+										</div>
+									</div>
+								</div>';
+					}
+		}
+		
 		public function addPessoa($pessoa, $con){
 			$sql = "INSERT INTO Pessoa(CPF,Nome,Telefone,E_MAIL, Data_nascimento, senha, Tipo_cargo)
 			  VALUES('".$pessoa->getCPF()."','".$pessoa->getNome()."','".$pessoa->getTelefone()."','".$pessoa->getEmail()."','".$pessoa->getDataNascimento()."','".$pessoa->getSenha()."','".$pessoa->getCargo()."');";
