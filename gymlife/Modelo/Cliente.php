@@ -1,5 +1,5 @@
 <?php
-	include_once './Pessoa.php';
+	include_once ('Pessoa.php');
 	class Cliente extends Pessoa {
 		private $idCliente;
 		private $plano;

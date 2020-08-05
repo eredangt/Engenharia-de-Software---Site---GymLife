@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
 
+
     <!-- Css Styles -->
 	<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
@@ -31,6 +32,13 @@
     <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
+
+	<!-- Js Plugins -->
+	<script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/jquery.barfiller.js"></script>
+    <script src="../js/jquery.slicknav.js"></script>
 </head>
 
 <body>
@@ -92,24 +100,7 @@
                             <li><a href="./imc.php">IMC</a></li>
                             <li><a href="./menu.php">Menu</a></li>
                             <?php
-								if($_SESSION['cargo'] == 'instrutor'){
-										echo '<li class="active"><a href="cadastrar.php">Cadastrar</a>
-											<ul class="dropdown">
-												<li><a href="cadastrarpessoa.php">Pessoa</a></li>
-												<li><a href="cadastrartreino.php">Treino</a></li>
-												<li><a href="cadastrarequipamento.php">Equipamento</a></li>
-												<li><a href="cadastrarplano.php">Plano</a></li>
-											</ul>
-										</li>
-										<li><a href="listar.php">Listar</a>
-											<ul class="dropdown">
-												<li><a href="listarpessoas.php">Pessoas</a></li>
-												<li><a href="listartreinos.php">Treinos</a></li>
-												<li><a href="listarequipamentos.php">Equipamentos</a></li>
-												<li><a href="listarplanos.php">Planos</a></li>
-											</ul>
-										</li>';
-								}
+								$pessoaDAO->implementaMenu();
 							?>
                         </ul>
                     </nav>
@@ -167,6 +158,8 @@
 					//ACESSA O BANCO DE DADOS E COLETA AS INFORMACOES DA PESSOA QUE SERA ALTERADO
 					//captura o codigo do usuario
 					$codigo = $_GET['codigo'];
+
+					//$pessoaDAO->capturaValores($codigo, $conexao);
 					$sql = "SELECT * FROM Pessoa WHERE idPessoa='" . $codigo . "';";
 
 					$tabela = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
@@ -234,6 +227,7 @@
                 <div class="col-lg-6">
                     <div class="leave-comment">
 		                    <span id="spanSpecial">Tipo de Cadastro</span>
+							<?php echo 'CARGO: '. $tipoCargo . 'testei aqui'?>
                             <select name="selecao" id="selectCadastro" class="meuSelect">
                                 <option value="C" <?php if($tipoCargo == 'C'){ echo 'selected'; } ?>>Cliente</option>
                                 <option value="I" <?php if($tipoCargo == 'I'){ echo 'selected'; } ?>>Instrutor</option>
@@ -261,24 +255,15 @@
 									<span id="spanSpecial">Plano a ser contratado pelo Cliente</span>
 									<select name="selecaoPlanoC" id="selecaoPlano" class="meuSelect" required>
 										<?php
-											require('../Persistencia/phpConexaoBD.php');
+											//require('../Persistencia/phpConexaoBD.php');
+											$pessoaDAO->selecionarPlano($conexao);
 
-											$sqlP = 'SELECT * FROM plano';
-											$tabelaP = mysqli_query($conexao,$sqlP) or die(mysqli_error($conexao));
-
-											$selecionado = '';
-											while($linhaP=mysqli_fetch_row($tabelaP)){
-												if($planoCliente == $linhaP[0]){
-													$selecionado = 'selected';
-												}
-												echo '<option value="'.htmlentities($linhaP[0]).'" '.$selecionado.'>'.htmlentities($linhaP[1]).'</option>';
-											}
 										?>
 									</select>
 									<button type="submit">ALTERAR</button>
 								</div>
                             </form>
-                            <form action="../Controle/phpAlterarPessoa.php" method="POST" name="frmLogin" enctype="multipart/form-data" autocomplete="off">
+                            <form action="../Controle/phpAlterarPessoa.php" method="POST" name="frmLogin1" enctype="multipart/form-data" autocomplete="off">
 								<div class="Instrutor_Selecionado" id="InstrutorSel" style="display:none">
 									<input type="hidden" name="hddCodigo" value="<?php echo $codigo; ?>">
 									<input type="hidden" name="selecao" value="I">
@@ -394,13 +379,7 @@
                             <li><a href="./aulas.php">Aulas</a></li>
                             <li><a href="./modalidades.php">Modalidades</a></li>
                             <?php
-                                if(isset($_SESSION['login']))
-                                {
-                                    echo '<li><a href="./menu.php">Menu</a></li>';
-                                }
-                                else{
-                                    echo '<li><a href="./entrar.php">Login</a></li>';
-                                }
+								$pessoaDAO->implementaRodape();
                             ?>
                         </ul>
                     </div>
@@ -429,14 +408,9 @@
     </div>
     <!-- Search model end -->
 
-    <!-- Js Plugins -->
-	<script src="../js/jquery-1.12.4.min.js"></script>
-    <script src="../js/jquery-3.3.1.min.js"></script>
+	<!-- Js Plugins -->
     <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.magnific-popup.min.js"></script>
     <script src="../js/masonry.pkgd.min.js"></script>
-    <script src="../js/jquery.barfiller.js"></script>
-    <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
 </body>

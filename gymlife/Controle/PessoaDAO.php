@@ -9,6 +9,45 @@
 			echo $pessoa->getNome();
 		}
 
+		public function selecionarPlano($conexao) {
+			$sqlP = 'SELECT * FROM plano';
+			$tabelaP = mysqli_query($conexao,$sqlP) or die(mysqli_error($conexao));
+
+			$selecionado = '';
+			while($linhaP=mysqli_fetch_row($tabelaP)){
+				if($planoCliente == $linhaP[0]){
+					$selecionado = 'selected';
+				}
+				echo '<option value="'.htmlentities($linhaP[0]).'" '.$selecionado.'>'.htmlentities($linhaP[1]).'</option>';
+			}
+
+		}
+
+
+		public function listarPessoas($conexao){
+			$sql = 'SELECT * FROM Pessoa ORDER BY Nome ASC';
+			$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+			while($linha=mysqli_fetch_row($tabela)){
+				if($linha[7]=='C'){
+					$cargo = 'Cliente';
+				}else{
+					$cargo = 'Instrutor';
+				}
+
+				echo '<tr>
+						<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[2]).'</h5></td>
+						<td class="dark-bg hover-dp ts-meta"><h5>'.$cargo.'</h5></td>
+						<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[1]).'</h5></td>
+						<td class="dark-bg hover-dp ts-meta"><h5>'.htmlentities($linha[3]).'</h5></td>
+						<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[4]).'</h5></td>
+						<td class="dark-bg hover-dp ts-meta"><h5>'.htmlentities($linha[5]).'</h5></td>
+						<td class="hover-dp ts-meta"><h5><center><a href="alterarpessoa.php?codigo='.$linha[0].'"><b>&#9997;</b></a></h5></td>
+						<td class="dark-bg hover-dp ts-meta"><h5><center><a href="phpExcluirPessoa.php?codigo='.$linha[0].'"><b>&#10006;</b></a></h5></td>
+					</tr>';
+			}
+		}
+
 		public function implementaRestricao(){
 
 			if(!isset($_SESSION['login'])){
@@ -24,6 +63,7 @@
 				  </SCRIPT>';
 			}
 		}
+
 
 		public function implementaRestricaoLogar(){
 			if(!isset($_SESSION['login'])){
@@ -47,7 +87,7 @@
 
 		public function implementaLogOut(){
 			if(isset($_SESSION['login'])){
-				echo '<a href="./logout.php">Log Out</a>';
+				echo '<a href="../Controle/logout.php">Log Out</a>';
 			}
 		}
 
@@ -86,10 +126,10 @@
 							"Erro: implementaMenu".
 					"');</script>";
 				*/
-				echo '<li><a href="../Visualizacao/entrar.php">Login</a></li>';
+				echo '<li class="active"><a href="../Visualizacao/entrar.php">Login</a></li>';
 			}
 			else {
-				echo '<li><a href="../Visualizacao/menu.php">Menu</a></li>';
+				echo '<li class="active"><a href="../Visualizacao/menu.php">Menu</a></li>';
 
 				if($_SESSION['cargo'] == 'instrutor'){
 					echo '<li><a href="../Visualizacao/cadastrar.php">Cadastrar</a>

@@ -9,7 +9,7 @@
 		$conexao = new ConexaoBD();
 		$conexao = $conexao->abreConexao();
 		$pessoaDAO = new PessoaDAO();
-		$pessoaDAO->implementaRestricao($_SESSION['login'], $_SESSION['cargo']);
+		$pessoaDAO->implementaRestricao();
 	?>
     <meta charset="UTF-8">
     <meta name="description" content="Gym Template">
@@ -31,6 +31,14 @@
     <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
+
+	<!-- Js Plugins -->
+	<script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/jquery.barfiller.js"></script>
+    <script src="../js/jquery.slicknav.js"></script>
+
     <script>
 		function myFunction() {
 			// Declare variables
@@ -78,13 +86,7 @@
                 <li><a href="./imc.php">IMC</a></li>
                 <li><a href="./menu.php">Menu</a></li>
 				<?php
-				   include_once('../Persistencia/ConexaoBD.php');
-				   include_once('../Modelo/Pessoa.php');
-				   include_once('../Controle/PessoaDAO.php');
-				   $conexao = new ConexaoBD();
-				   $conexao = $conexao->abreConexao();
-				   $pessoaDAO = new PessoaDAO();
-				   $pessoaDAO->implementaMenu($_SESSION['login'], $_SESSION['cargo']);
+				   $pessoaDAO->implementaMenu();
 			   ?>
             </ul>
         </nav>
@@ -121,13 +123,7 @@
                             <li><a href="./imc.php">IMC</a></li>
                             <li><a href="./menu.php">Menu</a></li>
 							<?php
-							   include_once('../Persistencia/ConexaoBD.php');
-							   include_once('../Modelo/Pessoa.php');
-							   include_once('../Controle/PessoaDAO.php');
-							   $conexao = new ConexaoBD();
-							   $conexao = $conexao->abreConexao();
-							   $pessoaDAO = new PessoaDAO();
-							   $pessoaDAO->implementaMenu($_SESSION['login'], $_SESSION['cargo']);
+							   $pessoaDAO->implementaMenu();
 						   ?>
                         </ul>
                     </nav>
@@ -210,28 +206,8 @@
 										</thead>
 										<tbody>
 												<?php
-													require('../Persistencia/phpConexaoBD.php');                
-													$sql = 'SELECT * FROM Pessoa ORDER BY Nome ASC';
-													$tabela = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+													$pessoaDAO->listarPessoas($conexao);
 
-													while($linha=mysqli_fetch_row($tabela)){
-														if($linha[7]=='C'){
-															$cargo = 'Cliente';
-														}else{
-															$cargo = 'Instrutor';
-														}
-
-														echo '<tr>
-																<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[2]).'</h5></td>
-																<td class="dark-bg hover-dp ts-meta"><h5>'.$cargo.'</h5></td>
-																<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[1]).'</h5></td>
-																<td class="dark-bg hover-dp ts-meta"><h5>'.htmlentities($linha[3]).'</h5></td>
-																<td class="hover-dp ts-meta"><h5>'.htmlentities($linha[4]).'</h5></td>
-																<td class="dark-bg hover-dp ts-meta"><h5>'.htmlentities($linha[5]).'</h5></td>
-																<td class="hover-dp ts-meta"><h5><center><a href="alterarpessoa.php?codigo='.$linha[0].'"><b>&#9997;</b></a></h5></td>
-																<td class="dark-bg hover-dp ts-meta"><h5><center><a href="phpExcluirPessoa.php?codigo='.$linha[0].'"><b>&#10006;</b></a></h5></td>
-															</tr>';
-													}
 												?>
 											</tr>-->
 										</tbody>
@@ -297,13 +273,7 @@
                             <li><a href="./aulas.php">Aulas</a></li>
                             <li><a href="./modalidades.php">Modalidades</a></li>
 							<?php
-								include_once('../Persistencia/ConexaoBD.php');
-								include_once('../Modelo/Pessoa.php');
-								include_once('../Controle/PessoaDAO.php');
-								$conexao = new ConexaoBD();
-								$conexao = $conexao->abreConexao();
-								$pessoaDAO = new PessoaDAO();
-								$pessoaDAO->implementaRodape($_SESSION['login']);
+								$pessoaDAO->implementaRodape();
 				            ?>
                         </ul>
                     </div>
@@ -332,14 +302,9 @@
     </div>
     <!-- Search model end -->
 
-    <!-- Js Plugins -->
-	<script src="../js/jquery-1.12.4.min.js"></script>
-    <script src="../js/jquery-3.3.1.min.js"></script>
+	<!-- Js Plugins -->
     <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.magnific-popup.min.js"></script>
     <script src="../js/masonry.pkgd.min.js"></script>
-    <script src="../js/jquery.barfiller.js"></script>
-    <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
 </html>

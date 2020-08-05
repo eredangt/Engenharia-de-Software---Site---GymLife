@@ -5,6 +5,10 @@
     <?php
 		session_start();
         include_once('../Controle/PessoaDAO.php');
+        include_once('../Persistencia/ConexaoBD.php');
+        include_once('../Modelo/Pessoa.php');
+        $conexao = new ConexaoBD();
+        $conexao = $conexao->abreConexao();
         $pessoaDAO = new PessoaDAO();
     ?>
 
@@ -28,6 +32,13 @@
     <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
+
+	<!-- Js Plugins -->
+	<script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/jquery.barfiller.js"></script>
+    <script src="../js/jquery.slicknav.js"></script>
 </head>
 
 <body>
@@ -59,10 +70,6 @@
         <div class="canvas-social">
             <?php
 				$pessoaDAO->implementaLogOut();
-                /*if(isset($_SESSION['login']))
-                {
-                    echo '<a href="../Controle/logout.php">Log Out</a>';
-                }*/
             ?>
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -94,7 +101,6 @@
                             <li><a href="./imc.php">IMC</a></li>
 							<?php
 								$pessoaDAO->implementaMenu();
-
 							?>
                         </ul>
                     </nav>
@@ -104,11 +110,6 @@
                         <div class="to-social">
                             <?php
 								$pessoaDAO->implementaLogOut();
-                            /*
-                                if(isset($_SESSION['login']))
-                                {
-                                    echo '<a href="../Controle/logout.php">Log Out</a>';
-                                }*/
                             ?>
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -158,10 +159,6 @@
             </div>
             <div class="row">
                 <?php
-					include_once('Persistencia/ConexaoBD.php');
-					include_once('Modelo/Pessoa.php');
-					$conexao = new ConexaoBD();
-					$conexao = $conexao->abreConexao();
 					$pessoaDAO->minhaEquipe($conexao);
                 ?>
             </div>
@@ -221,13 +218,6 @@
                             <li><a href="./modalidades.php">Modalidades</a></li>
                             <?php
 								$pessoaDAO->implementaRodape();
-                                /*if(isset($_SESSION['login']))
-                                {
-                                    echo '<li><a href="./menu.php">Menu</a></li>';
-                                }
-                                else{
-                                    echo '<li><a href="./entrar.php">Login</a></li>';
-                                }*/
                             ?>
                         </ul>
                     </div>
@@ -256,14 +246,9 @@
     </div>
     <!-- Search model end -->
 
-    <!-- Js Plugins -->
-    <script src="../js/jquery-1.12.4.min.js"></script>
-    <script src="../js/jquery-3.3.1.min.js"></script>
+	<!-- Js Plugins -->
     <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.magnific-popup.min.js"></script>
     <script src="../js/masonry.pkgd.min.js"></script>
-    <script src="../js/jquery.barfiller.js"></script>
-    <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
 </body>

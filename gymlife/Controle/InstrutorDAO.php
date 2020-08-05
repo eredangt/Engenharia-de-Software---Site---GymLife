@@ -16,13 +16,13 @@
             $sql = "INSERT INTO Instrutor(Pessoa_idPessoa, salario, Carga_horaria, imagem)
                     VALUES('".$COD_Instrutor."','".$instrutor->getSalario()."','".$instrutor->getCH()."','".$instrutor->getImagem()."');";
 
-            echo $sql;
+            //echo $sql;
             $resultadoI = mysqli_query($con,$sql) or die(mysqli_error($con));
             if($resultadoI == true){
                 //echo 'Instrutor cadastrado.';
                 echo '<SCRIPT type="text/javascript"> //not showing me this
 								alert("Instrutor inserido com sucesso!");
-								window.location.replace("listarpessoas.php");
+								window.location.replace("../Visualizacao/listarpessoas.php");
 						</SCRIPT>';
             }else{
                 echo 'Algo ocorreu: ' . mysqli_error($con);
@@ -42,12 +42,12 @@
 				//echo 'Instrutor alterado com sucesso';
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 							alert("Instrutor alterado com sucesso!");
-							window.location.replace("menu.php");
+							window.location.replace("../Visualizacao/menu.php");
 					</SCRIPT>';
 			}else{
 				echo '<script>alert("Problema ao alterar INSTRUTOR no banco de dados");</script>';
 				echo 'O erro que aconteceu foi este: ' . mysqli_error($con).'<br>';
-				echo '<a href="menu.php"> VOLTAR </a>';
+				echo '<a href="../Visualizacao/menu.php"> VOLTAR </a>';
 			}
 		}
 

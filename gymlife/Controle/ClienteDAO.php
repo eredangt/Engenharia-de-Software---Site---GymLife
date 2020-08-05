@@ -25,7 +25,7 @@
 			if($resultadoC == true){
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 								alert("Cliente cadastrado com sucesso!");
-								window.location.replace("listarpessoas.php");
+								window.location.replace("../Visualizacao/listarpessoas.php");
 						</SCRIPT>';
 			}else{
 				echo 'Algo ocorreu: ' . mysqli_error($con);
@@ -43,12 +43,12 @@
 				//echo 'Cliente alterado com sucesso';
 				echo '<SCRIPT type="text/javascript"> //not showing me this
 							alert("Cliente alterado com sucesso!");
-							window.location.replace("menu.php");
+							window.location.replace("../Visualizacao/menu.php");
 					</SCRIPT>';
 			}else{
 				echo '<script>alert("Problema ao alterar CLIENTE no banco de dados");</script>';
 				echo 'O erro que aconteceu foi este: ' . mysqli_error($con).'<br>';
-				echo '<a href="menu.php"> VOLTAR </a>';
+				echo '<a href="../Visualizacao/menu.php"> VOLTAR </a>';
 			}
 		}
 

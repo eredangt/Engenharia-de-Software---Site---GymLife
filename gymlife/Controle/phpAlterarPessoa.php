@@ -98,7 +98,7 @@
 			}else{
 
 
-				$uploaddir = 'imgInstrutores/';
+				$uploaddir = '../imgInstrutores/';
 				$uploadfile = $uploaddir . basename($imagemI['name']);
 				if (move_uploaded_file($imagemI['tmp_name'], $uploadfile)){
 					echo "Imagem v&aacute;lido e enviado com sucesso.\n";

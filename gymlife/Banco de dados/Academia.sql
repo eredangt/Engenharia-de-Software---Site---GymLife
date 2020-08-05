@@ -136,7 +136,7 @@ INSERT INTO `Academia`.`pessoa` (`CPF`, `Nome`, `Telefone`, `E_MAIL`, `Data_nasc
 VALUES ('11122233344', 'Admin', '11233334444', 'admin@admin', '0001-01-01', 'admin', 'I');
 
 INSERT INTO `Academia`.`instrutor` (`Pessoa_idPessoa`, `Salario`, `Carga_horaria`, `imagem`)
-VALUES ('1', '9999.99', '0', 'imgInstrutores/Admin.jpg');
+VALUES ('1', '9999.99', '0', '../imgInstrutores/Admin.jpg');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
